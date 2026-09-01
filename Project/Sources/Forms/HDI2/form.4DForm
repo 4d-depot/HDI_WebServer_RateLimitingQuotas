@@ -242,7 +242,7 @@
 					"stroke": "#26334D",
 					"fontSize": 12,
 					"fontWeight": "bold",
-					"text": "Organisation"
+					"text": "Response"
 				},
 				"InputText3": {
 					"type": "input",
@@ -251,7 +251,7 @@
 					"width": 500,
 					"height": 44,
 					"sizingX": "grow",
-					"dataSource": "inputText3",
+					"dataSource": "Form:C1466.response",
 					"dataSourceTypeHint": "text",
 					"placeholder": "Nom de votre organisation",
 					"fill": "#FBFCFE",
@@ -308,6 +308,68 @@
 					"fontFamily": "Avenir Next Medium",
 					"fontSize": 18,
 					"fontWeight": "bold"
+				},
+				"LabelInputText4": {
+					"type": "text",
+					"top": 602,
+					"left": 330,
+					"width": 250,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"text": "Retry after"
+				},
+				"InputText4": {
+					"type": "input",
+					"top": 624,
+					"left": 330,
+					"width": 120,
+					"height": 44,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.retryAfter",
+					"dataSourceTypeHint": "text",
+					"placeholder": "Nom de votre organisation",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 6,
+					"fontSize": 14,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none"
+				},
+				"LabelInputText5": {
+					"type": "text",
+					"top": 602,
+					"left": 490,
+					"width": 250,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"fontSize": 12,
+					"fontWeight": "bold",
+					"text": "Chrono"
+				},
+				"InputText5": {
+					"type": "input",
+					"top": 624,
+					"left": 490,
+					"width": 120,
+					"height": 44,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.chrono",
+					"dataSourceTypeHint": "text",
+					"placeholder": "Nom de votre organisation",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 6,
+					"fontSize": 14,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none"
 				}
 			}
 		},
@@ -329,7 +391,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 263,
+	"geometryStamp": 302,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed"
 }

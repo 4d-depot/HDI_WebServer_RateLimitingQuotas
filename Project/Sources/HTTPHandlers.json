@@ -1,0 +1,14 @@
+[
+  {
+    "class": "AcceptanceHandler",
+    "method": "handle",
+    "regexPattern": "/acceptance",
+    "verbs": "get, post"
+  },
+  {
+    "class": "AcceptanceHandler",
+    "method": "buildContent",
+    "regexPattern": "/getContent",
+    "verbs": "get"
+  }
+]
