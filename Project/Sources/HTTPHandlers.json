@@ -3,10 +3,10 @@
     "class": "DemoHandler",
     "method": "handle",
     "regexPattern": "/demo",
-    "verbs": "get, post"
+    "verbs": "post"
   },
   {
-    "class": "AcceptanceHandler",
+    "class": "DemoHandler",
     "method": "buildContent",
     "regexPattern": "/getContent",
     "verbs": "get"

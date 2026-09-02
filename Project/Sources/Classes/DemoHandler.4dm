@@ -23,7 +23,7 @@ Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	
 Function buildContent($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	
-	var $file_50; $file_1000; $file_500 : 4D:C1709.File
+	var $file_60; $file_120 : 4D:C1709.File
 	var $files : Collection
 	
 	
@@ -32,17 +32,16 @@ Function buildContent($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingM
 	$files:=Folder:C1567("/RESOURCES/files/").files()
 	
 	Case of 
-		: (Num:C11($incoming.urlQuery.size)=50)
-			$file_50:=$files.query("name = :1"; "file_50_bytes").first()
-			$result.setBody($file_50.getText())
+		: (Num:C11($incoming.urlQuery.size)=60)
+			$file_60:=$files.query("name = :1"; "file_60_bytes").first()
+			$result.setBody($file_60.getText())
+			$result.setHeader("Content-Type"; "text/plain")
 			
-		: (Num:C11($incoming.urlQuery.size)=500)
-			$file_500:=$files.query("name = :1"; "file_500_bytes").first()
-			$result.setBody($file_500.getText())
+		: (Num:C11($incoming.urlQuery.size)=120)
+			$file_120:=$files.query("name = :1"; "file_120_bytes").first()
+			$result.setBody($file_120.getText())
+			$result.setHeader("Content-Type"; "text/plain")
 			
-		: (Num:C11($incoming.urlQuery.size)=1000)
-			$file_1000:=$files.query("name = :1"; "file_1000_bytes").first()
-			$result.setBody($file_1000.getText())
 	End case 
 	
 	return $result

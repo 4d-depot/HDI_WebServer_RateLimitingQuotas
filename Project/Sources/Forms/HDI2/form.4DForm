@@ -13,7 +13,8 @@
 	"markerFooter": 240,
 	"events": [
 		"onLoad",
-		"onCloseBox"
+		"onCloseBox",
+		"onPageChange"
 	],
 	"method": "method.4dm",
 	"pageFormat": {
@@ -361,9 +362,9 @@
 			"objects": {
 				"BtnContinueBackground1": {
 					"type": "rectangle",
-					"top": 653,
-					"left": 290,
-					"width": 300,
+					"top": 401,
+					"left": 625,
+					"width": 350,
 					"height": 60,
 					"sizingX": "move",
 					"sizingY": "move",
@@ -373,10 +374,10 @@
 				},
 				"Text1": {
 					"type": "text",
-					"text": "Send this data to the web server",
-					"top": 673,
-					"left": 290,
-					"width": 300,
+					"text": "Send this request to the web server",
+					"top": 421,
+					"left": 625,
+					"width": 350,
 					"height": 20,
 					"stroke": "#FFFFFF",
 					"textAlign": "center",
@@ -432,29 +433,9 @@
 					"height": 20,
 					"sizingX": "grow",
 					"stroke": "#26334D",
-					"text": "Data",
+					"text": "Requests:",
 					"fontSize": 18,
 					"fontWeight": "bold"
-				},
-				"InputText5": {
-					"type": "input",
-					"top": 443,
-					"left": 297,
-					"width": 300,
-					"height": 200,
-					"sizingX": "grow",
-					"dataSource": "Form:C1466.body",
-					"dataSourceTypeHint": "text",
-					"stroke": "#26334D",
-					"fontSize": 14,
-					"dragging": "none",
-					"dropping": "none",
-					"enterable": false,
-					"focusable": false,
-					"borderStyle": "solid",
-					"fill": "automatic",
-					"borderRadius": 8,
-					"verticalAlign": "middle"
 				},
 				"LabelInputText7": {
 					"type": "text",
@@ -464,7 +445,7 @@
 					"height": 18,
 					"sizingX": "grow",
 					"stroke": "#26334D",
-					"text": "inBytesPerMin",
+					"text": "outBytesPerMin",
 					"fontSize": 18,
 					"fontWeight": "bold"
 				},
@@ -475,7 +456,7 @@
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
-					"dataSource": "Form:C1466.quotas.inBytesPerMin",
+					"dataSource": "Form:C1466.quotas.outBytesPerMin",
 					"dataSourceTypeHint": "text",
 					"fill": "#FBFCFE",
 					"stroke": "#26334D",
@@ -491,8 +472,8 @@
 				},
 				"LabelInputText8": {
 					"type": "text",
-					"top": 483,
-					"left": 642,
+					"top": 492,
+					"left": 304,
 					"width": 150,
 					"height": 18,
 					"sizingX": "grow",
@@ -503,8 +484,8 @@
 				},
 				"InputText7": {
 					"type": "input",
-					"top": 515,
-					"left": 642,
+					"top": 524,
+					"left": 304,
 					"width": 300,
 					"height": 250,
 					"sizingX": "grow",
@@ -524,8 +505,8 @@
 				},
 				"LabelInputText9": {
 					"type": "text",
-					"top": 433,
-					"left": 761,
+					"top": 533,
+					"left": 641,
 					"width": 150,
 					"height": 18,
 					"sizingX": "grow",
@@ -536,13 +517,13 @@
 				},
 				"InputText8": {
 					"type": "input",
-					"top": 433,
-					"left": 870,
+					"top": 533,
+					"left": 750,
 					"width": 60,
 					"height": 50,
 					"sizingX": "grow",
 					"dataSource": "Form:C1466.retryAfter",
-					"dataSourceTypeHint": "text",
+					"dataSourceTypeHint": "integer",
 					"fill": "#FBFCFE",
 					"stroke": "#26334D",
 					"borderStyle": "solid",
@@ -558,9 +539,9 @@
 				},
 				"BtnContinue1": {
 					"type": "button",
-					"top": 653,
-					"left": 290,
-					"width": 300,
+					"top": 401,
+					"left": 625,
+					"width": 350,
 					"height": 60,
 					"sizingX": "move",
 					"sizingY": "move",
@@ -609,17 +590,6 @@
 					"fontSize": 14,
 					"styledText": true
 				},
-				"LabelInputText10": {
-					"type": "text",
-					"top": 411,
-					"left": 356,
-					"width": 450,
-					"height": 20,
-					"sizingX": "grow",
-					"stroke": "#26334D",
-					"text": "(55 characters + 5 carriage returns = 60 bytes)",
-					"fontSize": 18
-				},
 				"StepNumber5": {
 					"type": "text",
 					"top": 483,
@@ -630,6 +600,94 @@
 					"fontSize": 20,
 					"fontWeight": "normal",
 					"text": "Quotas:"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 333,
+					"top": 439,
+					"width": 272,
+					"height": 22,
+					"dataSource": "Form:C1466.urlGetData60",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 18
+				},
+				"Input3": {
+					"type": "input",
+					"left": 333,
+					"top": 469,
+					"width": 272,
+					"height": 22,
+					"dataSource": "Form:C1466.urlGetData120",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 18
+				},
+				"Radio Button": {
+					"type": "radio",
+					"text": "",
+					"top": 444,
+					"left": 289,
+					"width": 14,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.data60",
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "Form.radios"
+				},
+				"Radio Button1": {
+					"type": "radio",
+					"text": "",
+					"top": 472,
+					"left": 287,
+					"width": 21,
+					"height": 19,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.data120",
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "Form.radios"
+				},
+				"LabelInputText10": {
+					"type": "text",
+					"top": 481,
+					"left": 641,
+					"width": 150,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "Attempts",
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"InputText5": {
+					"type": "input",
+					"top": 481,
+					"left": 750,
+					"width": 60,
+					"height": 50,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.attempts",
+					"dataSourceTypeHint": "integer",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": false,
+					"focusable": false,
+					"textAlign": "center",
+					"verticalAlign": "middle"
 				}
 			}
 		},
@@ -648,7 +706,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 663,
+	"geometryStamp": 727,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
