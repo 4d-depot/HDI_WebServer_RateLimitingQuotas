@@ -11,7 +11,7 @@ Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	
 	
 	If ($incoming.getText()#"")
-		$result.setBody("Body content-type: "+String:C10($incoming.headers["content-type"])+"\n\n"+"Body content-length: "+String:C10($incoming.headers["content-length"])\
+		$result.setBody("Well received your data! \n\nBody content-type: "+String:C10($incoming.headers["content-type"])+"\n\n"+"Body content-length: "+String:C10($incoming.headers["content-length"])\
 			+"\n\n"+"Body: "+"\n\n"+$incoming.getText())
 		
 	Else 

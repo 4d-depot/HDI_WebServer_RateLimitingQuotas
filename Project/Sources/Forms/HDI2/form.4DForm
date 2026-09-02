@@ -97,22 +97,21 @@
 				},
 				"Text": {
 					"type": "text",
-					"text": "Send to the web server",
+					"text": "Send this data to the web server",
 					"top": 673,
 					"left": 290,
 					"width": 300,
 					"height": 20,
 					"stroke": "#FFFFFF",
 					"textAlign": "center",
-					"fontFamily": "Avenir Next Medium",
-					"fontSize": 18,
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"fontSize": 18
 				},
 				"SidePanel": {
 					"type": "rectangle",
 					"top": 70,
 					"left": 60,
-					"width": 870,
+					"width": 900,
 					"height": 300,
 					"sizingY": "grow",
 					"borderRadius": 8,
@@ -122,7 +121,7 @@
 				"StepNumber": {
 					"type": "text",
 					"top": 82,
-					"left": 90,
+					"left": 80,
 					"width": 750,
 					"height": 28,
 					"stroke": "#289FE8",
@@ -130,30 +129,19 @@
 					"fontWeight": "bold",
 					"text": "Rate limiting for inbound traffic"
 				},
-				"StepTitle": {
-					"type": "text",
-					"top": 118,
-					"left": 90,
-					"width": 140,
-					"height": 22,
-					"stroke": "#17233C",
-					"fontSize": 14,
-					"fontWeight": "bold",
-					"text": "VOTRE PROFIL"
-				},
 				"StepDescription": {
 					"type": "text",
-					"top": 122,
-					"left": 232,
+					"top": 344,
+					"left": 549,
 					"width": 376,
-					"height": 57,
+					"height": 15,
 					"stroke": "#718096",
 					"fontSize": 12,
 					"text": "Quelques informations suffisent pour commencer."
 				},
 				"ActiveStep": {
 					"type": "rectangle",
-					"top": 77,
+					"top": 70,
 					"left": 60,
 					"width": 5,
 					"height": 300,
@@ -164,12 +152,13 @@
 					"type": "text",
 					"top": 411,
 					"left": 297,
-					"width": 150,
+					"width": 100,
 					"height": 20,
 					"sizingX": "grow",
 					"stroke": "#26334D",
-					"text": "Body",
-					"fontSize": 18
+					"text": "Data",
+					"fontSize": 18,
+					"fontWeight": "bold"
 				},
 				"InputText1": {
 					"type": "input",
@@ -193,18 +182,19 @@
 				},
 				"LabelInputText2": {
 					"type": "text",
-					"top": 511,
+					"top": 531,
 					"left": 44,
 					"width": 150,
 					"height": 18,
 					"sizingX": "grow",
 					"stroke": "#26334D",
 					"text": "inBytesPerMin",
-					"fontSize": 18
+					"fontSize": 18,
+					"fontWeight": "bold"
 				},
 				"InputText2": {
 					"type": "input",
-					"top": 513,
+					"top": 533,
 					"left": 184,
 					"width": 70,
 					"height": 40,
@@ -232,7 +222,8 @@
 					"sizingX": "grow",
 					"stroke": "#26334D",
 					"text": "Response",
-					"fontSize": 18
+					"fontSize": 18,
+					"fontWeight": "bold"
 				},
 				"InputText3": {
 					"type": "input",
@@ -258,18 +249,19 @@
 				"LabelInputText4": {
 					"type": "text",
 					"top": 433,
-					"left": 637,
+					"left": 761,
 					"width": 150,
 					"height": 18,
 					"sizingX": "grow",
 					"stroke": "#26334D",
 					"text": "Retry after",
-					"fontSize": 18
+					"fontSize": 18,
+					"fontWeight": "bold"
 				},
 				"InputText4": {
 					"type": "input",
 					"top": 433,
-					"left": 746,
+					"left": 870,
 					"width": 60,
 					"height": 50,
 					"sizingX": "grow",
@@ -326,11 +318,320 @@
 					"width": 0,
 					"height": 400,
 					"stroke": "#289FE8"
+				},
+				"Input": {
+					"type": "input",
+					"left": 104,
+					"top": 120,
+					"width": 831,
+					"height": 205,
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Infos[1].Description",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"styledText": true
+				},
+				"LabelInputText5": {
+					"type": "text",
+					"top": 411,
+					"left": 356,
+					"width": 450,
+					"height": 20,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "(55 characters + 5 carriage returns = 60 bytes)",
+					"fontSize": 18
+				},
+				"StepNumber2": {
+					"type": "text",
+					"top": 483,
+					"left": 50,
+					"width": 240,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Quotas:"
 				}
 			}
 		},
 		{
-			"objects": {}
+			"objects": {
+				"BtnContinueBackground1": {
+					"type": "rectangle",
+					"top": 653,
+					"left": 290,
+					"width": 300,
+					"height": 60,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Send this data to the web server",
+					"top": 673,
+					"left": 290,
+					"width": 300,
+					"height": 20,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"SidePanel1": {
+					"type": "rectangle",
+					"top": 70,
+					"left": 60,
+					"width": 900,
+					"height": 300,
+					"sizingY": "grow",
+					"borderRadius": 8,
+					"stroke": "transparent",
+					"fill": "#F6FAFD"
+				},
+				"StepNumber3": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Rate limiting for outbound traffic"
+				},
+				"StepDescription1": {
+					"type": "text",
+					"top": 344,
+					"left": 549,
+					"width": 376,
+					"height": 15,
+					"stroke": "#718096",
+					"fontSize": 12,
+					"text": "Quelques informations suffisent pour commencer."
+				},
+				"ActiveStep1": {
+					"type": "rectangle",
+					"top": 70,
+					"left": 60,
+					"width": 5,
+					"height": 300,
+					"stroke": "transparent",
+					"fill": "#289FE8"
+				},
+				"LabelInputText6": {
+					"type": "text",
+					"top": 411,
+					"left": 297,
+					"width": 100,
+					"height": 20,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "Data",
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"InputText5": {
+					"type": "input",
+					"top": 443,
+					"left": 297,
+					"width": 300,
+					"height": 200,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.body",
+					"dataSourceTypeHint": "text",
+					"stroke": "#26334D",
+					"fontSize": 14,
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": false,
+					"focusable": false,
+					"borderStyle": "solid",
+					"fill": "automatic",
+					"borderRadius": 8,
+					"verticalAlign": "middle"
+				},
+				"LabelInputText7": {
+					"type": "text",
+					"top": 531,
+					"left": 44,
+					"width": 150,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "inBytesPerMin",
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"InputText6": {
+					"type": "input",
+					"top": 533,
+					"left": 184,
+					"width": 70,
+					"height": 40,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.quotas.inBytesPerMin",
+					"dataSourceTypeHint": "text",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": false,
+					"focusable": false,
+					"textAlign": "center",
+					"verticalAlign": "middle"
+				},
+				"LabelInputText8": {
+					"type": "text",
+					"top": 483,
+					"left": 642,
+					"width": 150,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "Response",
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"InputText7": {
+					"type": "input",
+					"top": 515,
+					"left": 642,
+					"width": 300,
+					"height": 250,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.response",
+					"dataSourceTypeHint": "text",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": false,
+					"focusable": false,
+					"verticalAlign": "middle"
+				},
+				"LabelInputText9": {
+					"type": "text",
+					"top": 433,
+					"left": 761,
+					"width": 150,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "Retry after",
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"InputText8": {
+					"type": "input",
+					"top": 433,
+					"left": 870,
+					"width": 60,
+					"height": 50,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.retryAfter",
+					"dataSourceTypeHint": "text",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": false,
+					"focusable": false,
+					"textAlign": "center",
+					"verticalAlign": "middle"
+				},
+				"BtnContinue1": {
+					"type": "button",
+					"top": 653,
+					"left": 290,
+					"width": 300,
+					"height": 60,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue1.4dm"
+				},
+				"StepNumber4": {
+					"type": "text",
+					"top": 433,
+					"left": 50,
+					"width": 240,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Web server settings"
+				},
+				"Line1": {
+					"type": "line",
+					"top": 380,
+					"left": 274,
+					"width": 0,
+					"height": 400,
+					"stroke": "#289FE8"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 104,
+					"top": 120,
+					"width": 831,
+					"height": 205,
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Infos[1].Description",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"styledText": true
+				},
+				"LabelInputText10": {
+					"type": "text",
+					"top": 411,
+					"left": 356,
+					"width": 450,
+					"height": 20,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "(55 characters + 5 carriage returns = 60 bytes)",
+					"fontSize": 18
+				},
+				"StepNumber5": {
+					"type": "text",
+					"top": 483,
+					"left": 50,
+					"width": 240,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Quotas:"
+				}
+			}
 		},
 		{
 			"objects": {}
@@ -347,7 +648,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 588,
+	"geometryStamp": 663,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
