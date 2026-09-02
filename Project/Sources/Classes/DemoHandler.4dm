@@ -10,15 +10,12 @@ Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	var $result:=4D:C1709.OutgoingMessage.new()
 	
 	
-	If ($incoming.urlQuery.privilege#Null:C1517)
-		Session:C1714.clearPrivileges()
-		Session:C1714.setPrivileges($incoming.urlQuery.privilege)
-	End if 
-	
 	If ($incoming.getText()#"")
-		$result.setBody("Content-type: "+String:C10($incoming.headers["content-type"])+" Content-length "+String:C10($incoming.headers["content-length"]))
+		$result.setBody("Body content-type: "+String:C10($incoming.headers["content-type"])+"\n\n"+"Body content-length: "+String:C10($incoming.headers["content-length"])\
+			+"\n\n"+"Body: "+"\n\n"+$incoming.getText())
+		
 	Else 
-		$result.setBody("Without body")
+		$result.setBody("You sent a request without body")
 	End if 
 	return $result
 	

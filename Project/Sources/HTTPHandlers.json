@@ -1,8 +1,8 @@
 [
   {
-    "class": "AcceptanceHandler",
+    "class": "DemoHandler",
     "method": "handle",
-    "regexPattern": "/acceptance",
+    "regexPattern": "/demo",
     "verbs": "get, post"
   },
   {

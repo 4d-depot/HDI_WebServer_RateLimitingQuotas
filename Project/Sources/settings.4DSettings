@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="10">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="11">
 	<com.4d>
 		<deployment>
 			<options/>
@@ -19,5 +19,10 @@
 		<database>
 			<misc/>
 		</database>
+		<web>
+			<standalone_server>
+				<configuration allow_ssl="false" session_mode="1"/>
+			</standalone_server>
+		</web>
 	</com.4d>
 </preferences>
