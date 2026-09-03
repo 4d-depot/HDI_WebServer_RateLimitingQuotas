@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Démo Rate Limiting — 4D Web Server</title>
+<style>
+  :root{
+    --bg:#fafaf8;
+    --panel:#ffffff;
+    --border:#e2e0da;
+    --text:#2b2b28;
+    --muted:#767268;
+    --accent:#2f6f4f;
+    --accent-dark:#204d37;
+    --warn:#b3492f;
+    --ok:#2f6f4f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.4;
+  }
+  header{
+    padding:24px 32px 12px;
+    border-bottom:1px solid var(--border);
+  }
+  header h1{
+    margin:0 0 4px;
+    font-size:20px;
+    font-weight:600;
+  }
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:14px;
+  }
+  main{
+    max-width:960px;
+    margin:0 auto;
+    padding:24px 32px 64px;
+    display:grid;
+    gap:20px;
+  }
+  section{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:18px 20px;
+  }
+  section h2{
+    margin:0 0 4px;
+    font-size:15px;
+    font-weight:600;
+  }
+  section p.hint{
+    margin:0 0 14px;
+    color:var(--muted);
+    font-size:13px;
+  }
+  .row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .row:last-child{margin-bottom:0;}
+  label{
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  input[type=number]{
+    width:90px;
+    padding:5px 7px;
+    border:1px solid var(--border);
+    border-radius:5px;
+    font-size:13px;
+  }
+  select{
+    padding:5px 7px;
+    border:1px solid var(--border);
+    border-radius:5px;
+    font-size:13px;
+    background:#fff;
+  }
+  input[type=checkbox]{margin:0;}
+  button{
+    border:1px solid var(--accent);
+    background:var(--accent);
+    color:#fff;
+    padding:7px 14px;
+    border-radius:5px;
+    font-size:13px;
+    cursor:pointer;
+  }
+  button:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
+  button.secondary{
+    background:#fff;
+    color:var(--text);
+    border-color:var(--border);
+  }
+  button.secondary:hover{background:#f2f1ed;}
+  button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+  }
+  #stats{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    font-size:13px;
+  }
+  #stats div span{
+    display:block;
+    font-size:20px;
+    font-weight:600;
+  }
+  #stats div.n429 span{color:var(--warn);}
+  #stats div.n200 span{color:var(--ok);}
+  #log{
+    background:#1e1e1c;
+    color:#d9d7cf;
+    border-radius:6px;
+    padding:10px 12px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    height:260px;
+    overflow-y:auto;
+    white-space:pre-wrap;
+  }
+  #log .l429{color:#e08a6d;}
+  #log .lok{color:#8fbf9f;}
+  #log .lerr{color:#e08a6d;font-weight:bold;}
+  .footer-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Démo Rate Limiting — 4D Web Server</h1>
+  <p>Envoie des requêtes vers <code>http://127.0.0.1/demo</code> pour tester les quotas configurés.</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>Requête unique</h2>
+    <p class="hint">nbRequestPerMin / nbRequestPerMinPerSession</p>
+    <div class="row">
+      <button id="btnGetSimple">Envoyer GET sans corps</button>
+    </div>
+    <div class="row">
+      <label>Corps (octets) <input type="number" id="bodySize" value="1000" min="1"></label>
+      <button id="btnPostBody">Envoyer POST avec corps</button>
+      <span class="hint" style="margin:0;">→ inBytesPerMin / inBytesPerMinPerSession</span>
+    </div>
+    <div class="row">
+      <label>Taille demandée (octets) <input type="number" id="respSize" value="1000" min="1"></label>
+      <button id="btnGetData">Demander des données</button>
+      <span class="hint" style="margin:0;">→ outBytesPerMin / outBytesPerMinPerSession</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rafale de requêtes</h2>
+    <p class="hint">Répète un type de requête en boucle pour atteindre rapidement un quota /min.</p>
+    <div class="row">
+      <label>Type
+        <select id="burstType">
+          <option value="simple">GET sans corps</option>
+          <option value="body">POST avec corps</option>
+          <option value="data">GET avec taille demandée</option>
+        </select>
+      </label>
+      <label>Taille (octets) <input type="number" id="burstSize" value="1000" min="1"></label>
+      <label>Nombre <input type="number" id="burstCount" value="100" min="1"></label>
+      <label>Intervalle (ms) <input type="number" id="burstDelay" value="50" min="0"></label>
+    </div>
+    <div class="row">
+      <label><input type="checkbox" id="burstNewSession"> Nouvelle session à chaque requête</label>
+    </div>
+    <div class="row footer-actions">
+      <div>
+        <button id="btnBurstStart">Lancer la rafale</button>
+        <button id="btnBurstStop" class="secondary" disabled>Arrêter</button>
+      </div>
+      <span class="hint" id="burstProgress" style="margin:0;"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sessions concurrentes</h2>
+    <p class="hint">nbSessions / nbGuestSessions — chaque requête sans cookie ouvre une nouvelle session invitée (aucune connexion n'est faite).</p>
+    <div class="row">
+      <label>Nombre de sessions à ouvrir <input type="number" id="sessionCount" value="20" min="1"></label>
+      <button id="btnOpenSessions">Ouvrir les sessions</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Résultats</h2>
+    <div id="stats">
+      <div class="n">Envoyées<span id="statTotal">0</span></div>
+      <div class="n200">200 / 2xx<span id="statOk">0</span></div>
+      <div class="n429">429<span id="stat429">0</span></div>
+    </div>
+    <div class="row" style="margin-top:12px;">
+      <button id="btnClearLog" class="secondary">Vider le journal</button>
+    </div>
+    <div id="log"></div>
+  </section>
+
+</main>
+
+<script src="./demo.js"></script>
+</body>
+</html>

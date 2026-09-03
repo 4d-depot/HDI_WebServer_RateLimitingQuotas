@@ -2,13 +2,7 @@
   {
     "class": "DemoHandler",
     "method": "handle",
-    "regexPattern": "/demo",
-    "verbs": "post"
-  },
-  {
-    "class": "DemoHandler",
-    "method": "buildContent",
-    "regexPattern": "/getContent",
-    "verbs": "get"
+    "regexPattern": "/runDemo",
+    "verbs": "get, post"
   }
 ]
