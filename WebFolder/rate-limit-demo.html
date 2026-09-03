@@ -147,8 +147,7 @@
 <body>
 
 <header>
-  <h1>Démo Rate Limiting — 4D Web Server</h1>
-  <p>Envoie des requêtes vers <code>http://127.0.0.1/demo</code> pour tester les quotas configurés.</p>
+  <h1 style="text-align: center;">Démo Rate Limiting — 4D Web Server</h1>
 </header>
 
 <main>
@@ -157,17 +156,12 @@
     <h2>Requête unique</h2>
     <p class="hint">nbRequestPerMin / nbRequestPerMinPerSession</p>
     <div class="row">
-      <button id="btnGetSimple">Envoyer GET sans corps</button>
-    </div>
-    <div class="row">
       <label>Corps (octets) <input type="number" id="bodySize" value="1000" min="1"></label>
       <button id="btnPostBody">Envoyer POST avec corps</button>
-      <span class="hint" style="margin:0;">→ inBytesPerMin / inBytesPerMinPerSession</span>
     </div>
     <div class="row">
       <label>Taille demandée (octets) <input type="number" id="respSize" value="1000" min="1"></label>
       <button id="btnGetData">Demander des données</button>
-      <span class="hint" style="margin:0;">→ outBytesPerMin / outBytesPerMinPerSession</span>
     </div>
   </section>
 
@@ -177,24 +171,27 @@
     <div class="row">
       <label>Type
         <select id="burstType">
-          <option value="simple">GET sans corps</option>
           <option value="body">POST avec corps</option>
-          <option value="data">GET avec taille demandée</option>
+          <option value="data">GET</option>
         </select>
       </label>
-      <label>Taille (octets) <input type="number" id="burstSize" value="1000" min="1"></label>
-      <label>Nombre <input type="number" id="burstCount" value="100" min="1"></label>
-      <label>Intervalle (ms) <input type="number" id="burstDelay" value="50" min="0"></label>
+      <label>Taille à envoyer ou recevoir (octets) <input type="number" id="burstSize" value="1000" min="1"></label>
     </div>
-    <div class="row">
+      <div class="row">
+    	  <label>Envoyer 1 requête toutes les <input type="number" id="burstDelay" value="2" min="1">seconds</label>
+      	  <label>jusqu'à atteindre<input type="number" id="burstCount" value="10" min="1"> requêtes</label>
+      </div>
+ 
+    <div class="row"> 
       <label><input type="checkbox" id="burstNewSession"> Nouvelle session à chaque requête</label>
-    </div>
+
     <div class="row footer-actions">
-      <div>
+      <div class="row">
         <button id="btnBurstStart">Lancer la rafale</button>
         <button id="btnBurstStop" class="secondary" disabled>Arrêter</button>
       </div>
       <span class="hint" id="burstProgress" style="margin:0;"></span>
+    </div>
     </div>
   </section>
 
@@ -202,8 +199,12 @@
     <h2>Sessions concurrentes</h2>
     <p class="hint">nbSessions / nbGuestSessions — chaque requête sans cookie ouvre une nouvelle session invitée (aucune connexion n'est faite).</p>
     <div class="row">
-      <label>Nombre de sessions à ouvrir <input type="number" id="sessionCount" value="20" min="1"></label>
-      <button id="btnOpenSessions">Ouvrir les sessions</button>
+      <label>Nombre de sessions (Guest) à ouvrir <input type="number" id="sessionCount" value="3" min="1"></label>
+      <button id="btnOpenSessions">Ouvrir les sessions (Guest)</button>
+    </div>
+    <div class="row">
+      <label>Nombre de sessions à ouvrir avec authentification<input type="number" id="authenticatedSessionCount" value="1" min="1"></label>
+      <button id="btnOpenAndAuthenticateSessions">Ouvrir et authentifier les sessions</button>
     </div>
   </section>
 
@@ -213,6 +214,8 @@
       <div class="n">Envoyées<span id="statTotal">0</span></div>
       <div class="n200">200 / 2xx<span id="statOk">0</span></div>
       <div class="n429">429<span id="stat429">0</span></div>
+      <div class="n">Nombre de sessions<span id="nbSessions">0</span></div>
+      <div class="n">Nombre de sessions Guest<span id="nbGuestSessions">0</span></div>
     </div>
     <div class="row" style="margin-top:12px;">
       <button id="btnClearLog" class="secondary">Vider le journal</button>

@@ -3,9 +3,35 @@
 property data60 : Boolean
 property data120 : Boolean
 
+property quotaNames : Collection
+
 
 Class constructor
 	
+	This:C1470.quotaNames:=New collection:C1472()
+	
+	This:C1470.quotaNames.push("inBytesPerMin")
+	This:C1470.quotaNames.push("outBytesPerMin")
+	
+	This:C1470.quotaNames.push("inBytesPerHour")
+	This:C1470.quotaNames.push("outBytesPerHour")
+	
+	This:C1470.quotaNames.push("nbRequestPerMin")
+	This:C1470.quotaNames.push("nbRequestPerHour")
+	
+	This:C1470.quotaNames.push("inBytesPerMinPerSession")
+	This:C1470.quotaNames.push("outBytesPerMinPerSession")
+	
+	This:C1470.quotaNames.push("inBytesPerHourPerSession")
+	This:C1470.quotaNames.push("outBytesPerHourPerSession")
+	
+	This:C1470.quotaNames.push("nbRequestPerMinPerSession")
+	This:C1470.quotaNames.push("nbRequestPerHourPerSession")
+	
+	This:C1470.quotaNames.push("nbSessions")
+	This:C1470.quotaNames.push("nbGuestSessions")
+	
+	This:C1470.quotaNames.push("nbEntitySetsPerSession")
 	
 	
 Function formEventHandler($formEventCode : Integer)
@@ -18,19 +44,25 @@ Function formEventHandler($formEventCode : Integer)
 			
 			InitInfo
 			
-			$files:=Folder:C1567("/RESOURCES/files/").files()
+			WEB Server:C1674().stop()
+			DELAY PROCESS:C323(Current process:C322; 60)
+			
+			Form:C1466.quotas:={inBytesPerMin: 10}
+			
+			
+			//$files:=Folder("/RESOURCES/files/").files()
 			
 			//$file_1000:=$files.query("name = :1"; "file_1000_bytes").first()  // 1000 bytes gives
 			//$file_500:=$files.query("name = :1"; "file_500_bytes").first()  // 500 bytes gives 
-			Form:C1466.file_60:=$files.query("name = :1"; "file_60_bytes").first()  // 60 bytes gives 343 bytes sent to the server
+			//Form.file_60:=$files.query("name = :1"; "file_60_bytes").first()  // 60 bytes gives 343 bytes sent to the server
 			
-			Form:C1466.urlGetData60:="http://localhost/getContent?size=60"
-			Form:C1466.urlGetData120:="http://localhost/getContent?size=120"
+			//Form.urlGetData60:="http://localhost/getContent?size=60"
+			//Form.urlGetData120:="http://localhost/getContent?size=120"
 			
 			
-			Form:C1466.body:=Form:C1466.file_60.getText()
-			Form:C1466.data60:=True:C214
-			Form:C1466.data120:=False:C215
+			//Form.body:=Form.file_60.getText()
+			//Form.data60:=True
+			//Form.data120:=False
 			
 			manageTexts
 			
@@ -38,33 +70,39 @@ Function formEventHandler($formEventCode : Integer)
 		: ($formEventCode=On Page Change:K2:54)
 			
 			Case of 
+					
 				: (FORM Get current page:C276=2)
 					
-					If (Not:C34(WEB Server:C1674().isRunning))
-						WEB Server:C1674().start({quotas: {inBytesPerMin: 350; outBytesPerMin: Null:C1517}})
-						DELAY PROCESS:C323(Current process:C322; 60)
-					Else 
-						WEB Server:C1674().quotas.inBytesPerMin:=350
-						WEB Server:C1674().quotas.outBytesPerMin:=Null:C1517
-					End if 
 					
 					
-				: (FORM Get current page:C276=3)
-					If (Not:C34(WEB Server:C1674().isRunning))
-						WEB Server:C1674().start({quotas: {outBytesPerMin: 130; inBytesPerMin: Null:C1517}})
-						DELAY PROCESS:C323(Current process:C322; 60)
-					Else 
-						WEB Server:C1674().quotas.outBytesPerMin:=130
-						WEB Server:C1674().quotas.inBytesPerMin:=Null:C1517
-					End if 
 					
-					Form:C1466.attempts:=0
+					//: (FORM Get current page=3)
+					
+					//If (Not(WEB Server().isRunning))
+					//WEB Server().start({quotas: {inBytesPerMin: 350; outBytesPerMin: Null}})
+					//DELAY PROCESS(Current process; 60)
+					//Else 
+					//WEB Server().quotas.inBytesPerMin:=350
+					//WEB Server().quotas.outBytesPerMin:=Null
+					//End if 
+					
+					
+					//: (FORM Get current page=4)
+					//If (Not(WEB Server().isRunning))
+					//WEB Server().start({quotas: {outBytesPerMin: 130; inBytesPerMin: Null}})
+					//DELAY PROCESS(Current process; 60)
+					//Else 
+					//WEB Server().quotas.outBytesPerMin:=130
+					//WEB Server().quotas.inBytesPerMin:=Null
+					//End if 
+					
+					//Form.attempts:=0
 					
 					
 					
 			End case 
 			
-			Form:C1466.quotas:=WEB Server:C1674().quotas
+			//Form.quotas:=WEB Server().quotas
 			
 			
 		: (Form event code:C388=On Close Box:K2:21)
@@ -75,6 +113,32 @@ Function formEventHandler($formEventCode : Integer)
 			End if 
 			
 	End case 
+	
+	
+Function applyQuota($quotaName : Text; $quotaValue : Integer)
+	
+	This:C1470.resetQuotas()
+	WEB Server:C1674().quotas[$quotaName]:=$quotaValue
+	
+	Form:C1466.quotas:=This:C1470.getQuotas()
+	
+	
+Function resetQuotas()
+	
+	For each ($name; This:C1470.quotaNames)
+		WEB Server:C1674.quotas[$name]:=Null:C1517
+	End for each 
+	
+	
+Function getQuotas() : Object
+	
+	var $result:={}
+	
+	For each ($name; WEB Server:C1674().quotas)
+		$result[$name]:=WEB Server:C1674().quotas[$name]
+	End for each 
+	
+	return $result
 	
 	
 Function sendDataToServer()

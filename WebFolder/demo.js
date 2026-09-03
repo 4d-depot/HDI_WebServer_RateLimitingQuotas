@@ -3,7 +3,7 @@
 const BASE_URL = 'http://127.0.0.1/runDemo';
 
 // --- Etat global / statistiques ---
-const stats = { total: 0, ok: 0, e429: 0 };
+const stats = { total: 0, ok: 0, e429: 0, nbSessions: 0, nbGuestSessions: 0};
 let burstRunning = false;
 
 // --- Références DOM ---
@@ -11,6 +11,8 @@ const logEl = document.getElementById('log');
 const statTotalEl = document.getElementById('statTotal');
 const statOkEl = document.getElementById('statOk');
 const stat429El = document.getElementById('stat429');
+const statNbSessionsEl = document.getElementById('nbSessions');
+const statNbGuestSessionsEl = document.getElementById('nbGuestSessions');
 const burstProgressEl = document.getElementById('burstProgress');
 const btnBurstStart = document.getElementById('btnBurstStart');
 const btnBurstStop = document.getElementById('btnBurstStop');
@@ -39,14 +41,20 @@ function updateStats() {
   statTotalEl.textContent = stats.total;
   statOkEl.textContent = stats.ok;
   stat429El.textContent = stats.e429;
+  statNbSessionsEl.textContent = stats.nbSessions;
+  statNbGuestSessionsEl.textContent = stats.nbGuestSessions;
 }
 
 // Envoie une requête et journalise le résultat.
 // params: { method, body, querySize, newSession }
-async function sendRequest({ method = 'GET', body = null, querySize = null, newSession = false } = {}) {
+async function sendRequest({ method = 'GET', body = null, querySize = null, newSession = false, authenticate = false } = {}) {
   let url = BASE_URL;
   if (querySize !== null) {
     url += '?size=' + encodeURIComponent(querySize);
+  }
+  
+  if (authenticate) {
+    url += '?authenticate=true';
   }
 
   const options = {
@@ -74,6 +82,10 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
       cssClass = 'l429';
     } else if (response.ok) {
       stats.ok++;
+      
+      if (newSession && authenticate == false) {
+           stats.nbSessions++;
+      }
     }
 
     const retryAfter = response.headers.get('Retry-After');
@@ -90,11 +102,6 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
     return null;
   }
 }
-
-// --- Requête unique : GET sans corps ---
-document.getElementById('btnGetSimple').addEventListener('click', () => {
-  sendRequest({ method: 'GET' });
-});
 
 // --- Requête unique : POST avec corps ---
 document.getElementById('btnPostBody').addEventListener('click', () => {
@@ -114,7 +121,6 @@ function buildBurstRequestOptions() {
   const size = parseInt(document.getElementById('burstSize').value, 10) || 0;
   const newSession = document.getElementById('burstNewSession').checked;
 
-  if (type === 'simple') return { method: 'GET', newSession };
   if (type === 'body') return { method: 'POST', body: makeBody(size), newSession };
   if (type === 'data') return { method: 'GET', querySize: size, newSession };
 }
@@ -131,7 +137,7 @@ btnBurstStart.addEventListener('click', async () => {
     burstProgressEl.textContent = `Requête ${i} / ${count}`;
     await sendRequest(buildBurstRequestOptions());
     if (delay > 0 && i < count) {
-      await new Promise((resolve) => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, delay * 1000));
     }
   }
 
@@ -145,11 +151,19 @@ btnBurstStop.addEventListener('click', () => {
   burstRunning = false;
 });
 
-// --- Sessions concurrentes (nbSessions / nbGuestSessions) ---
+// --- Sessions concurrentes (nbSessions -) ---
 document.getElementById('btnOpenSessions').addEventListener('click', async () => {
   const count = parseInt(document.getElementById('sessionCount').value, 10) || 0;
   for (let i = 1; i <= count; i++) {
     await sendRequest({ method: 'GET', newSession: true });
+  }
+});
+
+// --- Sessions concurrentes (nbGuestSessions) ---
+document.getElementById('btnOpenAndAuthenticateSessions').addEventListener('click', async () => {
+  const count = parseInt(document.getElementById('authenticatedSessionCount').value, 10) || 0;
+  for (let i = 1; i <= count; i++) {
+    await sendRequest({ method: 'GET', authenticate: true});
   }
 });
 
@@ -159,5 +173,7 @@ document.getElementById('btnClearLog').addEventListener('click', () => {
   stats.total = 0;
   stats.ok = 0;
   stats.e429 = 0;
+  stats.nbSessions = 0;
+  stats.nbGuestSessions = 0;
   updateStats();
 });

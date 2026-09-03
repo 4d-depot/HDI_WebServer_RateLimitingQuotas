@@ -84,6 +84,193 @@
 		},
 		{
 			"objects": {
+				"BtnContinueBackground2": {
+					"type": "rectangle",
+					"top": 401,
+					"left": 353,
+					"width": 300,
+					"height": 60,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Apply",
+					"top": 421,
+					"left": 353,
+					"width": 300,
+					"height": 20,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"SidePanel2": {
+					"type": "rectangle",
+					"top": 70,
+					"left": 60,
+					"width": 900,
+					"height": 300,
+					"sizingY": "grow",
+					"borderRadius": 8,
+					"stroke": "transparent",
+					"fill": "#F6FAFD"
+				},
+				"StepNumber6": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Rate limiting for inbound traffic"
+				},
+				"StepDescription2": {
+					"type": "text",
+					"top": 344,
+					"left": 549,
+					"width": 376,
+					"height": 15,
+					"stroke": "#718096",
+					"fontSize": 12,
+					"text": "Quelques informations suffisent pour commencer."
+				},
+				"ActiveStep2": {
+					"type": "rectangle",
+					"top": 70,
+					"left": 60,
+					"width": 5,
+					"height": 300,
+					"stroke": "transparent",
+					"fill": "#289FE8"
+				},
+				"LabelInputText12": {
+					"type": "text",
+					"top": 481,
+					"left": 44,
+					"width": 150,
+					"height": 18,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "inBytesPerMin",
+					"fontSize": 18,
+					"fontWeight": "bold"
+				},
+				"InputText10": {
+					"type": "input",
+					"top": 483,
+					"left": 184,
+					"width": 70,
+					"height": 40,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.quotas.inBytesPerMin",
+					"dataSourceTypeHint": "integer",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": true,
+					"focusable": false,
+					"textAlign": "center",
+					"verticalAlign": "middle"
+				},
+				"BtnContinue2": {
+					"type": "button",
+					"top": 401,
+					"left": 353,
+					"width": 300,
+					"height": 60,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue2.4dm"
+				},
+				"StepNumber7": {
+					"type": "text",
+					"top": 383,
+					"left": 50,
+					"width": 240,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Web server settings"
+				},
+				"Line2": {
+					"type": "line",
+					"top": 380,
+					"left": 844,
+					"width": 0,
+					"height": 400,
+					"stroke": "#289FE8"
+				},
+				"Input4": {
+					"type": "input",
+					"left": 104,
+					"top": 120,
+					"width": 831,
+					"height": 205,
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Infos[1].Description",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"styledText": true
+				},
+				"StepNumber8": {
+					"type": "text",
+					"top": 433,
+					"left": 50,
+					"width": 240,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Quotas:"
+				},
+				"InputText9": {
+					"type": "input",
+					"top": 483,
+					"left": 358,
+					"width": 300,
+					"height": 300,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.quotas",
+					"dataSourceTypeHint": "text",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": true,
+					"focusable": false,
+					"textAlign": "center",
+					"verticalAlign": "middle"
+				}
+			}
+		},
+		{
+			"objects": {
 				"BtnContinueBackground": {
 					"type": "rectangle",
 					"top": 653,
@@ -690,9 +877,6 @@
 					"verticalAlign": "middle"
 				}
 			}
-		},
-		{
-			"objects": {}
 		}
 	],
 	"$4d": {
@@ -706,7 +890,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 727,
+	"geometryStamp": 822,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
