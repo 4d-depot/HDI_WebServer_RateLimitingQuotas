@@ -44,11 +44,17 @@ Function formEventHandler($formEventCode : Integer)
 			
 			InitInfo
 			
-			WEB Server:C1674().stop()
-			DELAY PROCESS:C323(Current process:C322; 60)
 			
-			Form:C1466.quotas:={inBytesPerMin: 10}
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000}
 			
+			If (Not:C34(WEB Server:C1674().isRunning))
+				WEB Server:C1674().start()
+				DELAY PROCESS:C323(Current process:C322; 60)
+			End if 
+			
+			This:C1470.resetQuotas()
+			
+			Form:C1466.quotas:=This:C1470.getQuotas()
 			
 			//$files:=Folder("/RESOURCES/files/").files()
 			
@@ -135,10 +141,19 @@ Function getQuotas() : Object
 	var $result:={}
 	
 	For each ($name; WEB Server:C1674().quotas)
-		$result[$name]:=WEB Server:C1674().quotas[$name]
+		If ($name#"currentValues")
+			$result[$name]:=WEB Server:C1674().quotas[$name]
+		End if 
 	End for each 
 	
 	return $result
+	
+	
+Function testNow()
+	
+	OPEN URL:C673("http://127.0.0.1/testQuotas.html")
+	
+	
 	
 	
 Function sendDataToServer()

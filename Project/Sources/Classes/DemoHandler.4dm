@@ -5,7 +5,7 @@ shared singleton Class constructor
 	
 Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	
-	TRACE:C157
+	//TRACE
 	
 	var $result:=4D:C1709.OutgoingMessage.new()
 	

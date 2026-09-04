@@ -86,10 +86,10 @@
 			"objects": {
 				"BtnContinueBackground2": {
 					"type": "rectangle",
-					"top": 401,
-					"left": 353,
-					"width": 300,
-					"height": 60,
+					"top": 481,
+					"left": 310,
+					"width": 200,
+					"height": 40,
 					"sizingX": "move",
 					"sizingY": "move",
 					"borderRadius": 6,
@@ -99,10 +99,10 @@
 				"Text2": {
 					"type": "text",
 					"text": "Apply",
-					"top": 421,
-					"left": 353,
-					"width": 300,
-					"height": 20,
+					"top": 490,
+					"left": 310,
+					"width": 200,
+					"height": 0,
 					"stroke": "#FFFFFF",
 					"textAlign": "center",
 					"fontWeight": "bold",
@@ -168,7 +168,7 @@
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
-					"dataSource": "Form:C1466.quotas.inBytesPerMin",
+					"dataSource": "Form:C1466.proposedQuotas.inBytesPerMin",
 					"dataSourceTypeHint": "integer",
 					"fill": "#FBFCFE",
 					"stroke": "#26334D",
@@ -184,10 +184,10 @@
 				},
 				"BtnContinue2": {
 					"type": "button",
-					"top": 401,
-					"left": 353,
-					"width": 300,
-					"height": 60,
+					"top": 481,
+					"left": 310,
+					"width": 200,
+					"height": 40,
 					"sizingX": "move",
 					"sizingY": "move",
 					"style": "regular",
@@ -216,7 +216,7 @@
 				"Line2": {
 					"type": "line",
 					"top": 380,
-					"left": 844,
+					"left": 607,
 					"width": 0,
 					"height": 400,
 					"stroke": "#289FE8"
@@ -248,8 +248,8 @@
 				},
 				"InputText9": {
 					"type": "input",
-					"top": 483,
-					"left": 358,
+					"top": 401,
+					"left": 648,
 					"width": 300,
 					"height": 300,
 					"sizingX": "grow",
@@ -264,8 +264,52 @@
 					"dropping": "none",
 					"enterable": true,
 					"focusable": false,
+					"textAlign": "left",
+					"verticalAlign": "top"
+				},
+				"BtnContinueBackground3": {
+					"type": "rectangle",
+					"top": 541,
+					"left": 310,
+					"width": 200,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Test now",
+					"top": 550,
+					"left": 310,
+					"width": 200,
+					"height": 0,
+					"stroke": "#FFFFFF",
 					"textAlign": "center",
-					"verticalAlign": "middle"
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue3": {
+					"type": "button",
+					"top": 541,
+					"left": 310,
+					"width": 200,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue3.4dm"
 				}
 			}
 		},
@@ -890,7 +934,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 822,
+	"geometryStamp": 887,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"

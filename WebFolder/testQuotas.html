@@ -25,12 +25,13 @@
   }
   header{
     padding:24px 32px 12px;
-    border-bottom:1px solid var(--border);
+
   }
   header h1{
     margin:0 0 4px;
     font-size:20px;
-    font-weight:600;
+    font-weight:400;
+    color:#3AA2FB;
   }
   header p{
     margin:0;
@@ -52,9 +53,17 @@
   }
   section h2{
     margin:0 0 4px;
-    font-size:15px;
+    font-size:18px;
     font-weight:600;
   }
+ section p.info{
+    margin:0 0 4px;
+    font-size:14px;
+    font-weight:400;
+    color:var(--muted);
+    margin:0 0 0 30px;
+  }
+
   section p.hint{
     margin:0 0 14px;
     color:var(--muted);
@@ -67,9 +76,16 @@
     gap:10px;
     margin-bottom:10px;
   }
+  
+  .blueLabel{
+    font-size:20px;
+    font-weight:400;
+    color:#3AA2FB;
+  }
+  
   .row:last-child{margin-bottom:0;}
   label{
-    font-size:13px;
+    font-size:15px;
     color:var(--muted);
     display:flex;
     align-items:center;
@@ -142,9 +158,48 @@
     justify-content:space-between;
     align-items:center;
   }
+  #quotas{
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+    padding:10px 32px;
+  }
+  #quotas .quotas-title{
+    font-size:24px;
+    font-weight:600;
+    color:#3AA2FB;
+    margin-bottom:8px;
+  }
+  #quotas .quotas-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+  }
+  #quotas .quota{
+    flex:1 1 auto;
+    min-width:110px;
+    padding:4px 16px;
+    border-right:1px solid var(--border);
+    text-align:center;
+  }
+  #quotas .quota:last-child{border-right:none;}
+  #quotas .quota .label{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    margin-bottom:2px;
+  }
+  #quotas .quota .value{
+    display:block;
+    font-size:16px;
+    font-weight:600;
+    color:var(--text);
+  }
 </style>
 </head>
 <body>
+
 
 <header>
   <h1 style="text-align: center;">Démo Rate Limiting — 4D Web Server</h1>
@@ -154,14 +209,21 @@
 
   <section>
     <h2>Requête unique</h2>
-    <p class="hint">nbRequestPerMin / nbRequestPerMinPerSession</p>
     <div class="row">
-      <label>Corps (octets) <input type="number" id="bodySize" value="1000" min="1"></label>
-      <button id="btnPostBody">Envoyer POST avec corps</button>
+     <label class="blueLabel">1-</label>
+      <label>Générer des données de <input type="number" id="bodySize" value="1000" min="1">octets</label>
+      <button id="btnPostBody">Envoyer ces données dans un POST</button>
+      </br>
+     <p class="info"> Ratios:
+      </br>
+      - 1000 octets correspondent à 1687 octets envoyés au total
+      </p>
     </div>
+    </br>
     <div class="row">
-      <label>Taille demandée (octets) <input type="number" id="respSize" value="1000" min="1"></label>
-      <button id="btnGetData">Demander des données</button>
+      <label class="blueLabel">2-</label>
+      <label>Requêter des données de<input type="number" id="respSize" value="1000" min="1">octets</label>
+      <button id="btnGetData">Requêter les données</button>
     </div>
   </section>
 
@@ -225,6 +287,6 @@
 
 </main>
 
-<script src="./demo.js"></script>
+<script src="./testQuotas.js"></script>
 </body>
 </html>

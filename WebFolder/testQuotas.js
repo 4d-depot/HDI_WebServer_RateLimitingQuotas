@@ -17,6 +17,19 @@ const burstProgressEl = document.getElementById('burstProgress');
 const btnBurstStart = document.getElementById('btnBurstStart');
 const btnBurstStop = document.getElementById('btnBurstStop');
 
+// --- Bandeau de quotas ---
+const QUOTA_KEYS = [
+  'inBytesPerMin',
+  'outBytesPerMin',
+  'nbRequestPerMin',
+  'nbSessions',
+  'nbGuestSessions',
+  'inBytesPerMinPerSession',
+  'outBytesPerMinPerSession',
+  'nbRequestPerMinPerSession',
+  'nbEntitySetsPerSession',
+];
+
 // --- Utilitaires ---
 
 // Construit une chaîne de la taille demandée (en octets, approximatif car UTF-8 sur 1 octet pour ces caractères)
@@ -166,6 +179,8 @@ document.getElementById('btnOpenAndAuthenticateSessions').addEventListener('clic
     await sendRequest({ method: 'GET', authenticate: true});
   }
 });
+
+
 
 // --- Divers ---
 document.getElementById('btnClearLog').addEventListener('click', () => {
