@@ -28,7 +28,6 @@
 
   }
   header h1{
-    margin:0 0 4px;
     font-size:20px;
     font-weight:400;
     color:#3AA2FB;
@@ -41,7 +40,7 @@
   main{
     max-width:960px;
     margin:0 auto;
-    padding:24px 32px 64px;
+    padding:5px 32px 64px;
     display:grid;
     gap:20px;
   }
@@ -64,10 +63,12 @@
     margin:0 0 0 30px;
   }
 
-  section p.hint{
+ section p.hint{
     margin:0 0 14px;
-    color:var(--muted);
-    font-size:13px;
+    color:var(--ok);
+    font-size:15px;
+    display:flex;
+    align-items:center;
   }
   .row{
     display:flex;
@@ -100,8 +101,26 @@
   
   .count{
     font-size:15px;
-    color:var(--muted);
+    color:var(--text);
+    font-weight:600;
     display:flex;
+    margin-left:-6px;
+  }
+  
+   .countKO{
+    font-size:15px;
+    color:var(--warn);
+    font-weight:600;
+    display:flex;
+    margin-left:-6px;
+  }
+  
+   .countOK{
+    font-size:15px;
+    color:var(--ok);
+    font-weight:600;
+    display:flex;
+    margin-left:-6px;
   }
   
   input[type=number]{
@@ -223,7 +242,6 @@
 </header>
 
 <main>
-
   <section>
     <h2>Requête unique</h2>
     <div class="row">
@@ -270,7 +288,7 @@
         <button id="btnBurstStart">Lancer la rafale</button>
         <button id="btnBurstStop" class="secondary" disabled>Arrêter</button>
       </div>
-      <span class="hint" id="burstProgress" style="margin:0;"></span>
+      <p class="hint" id="burstProgress"></p>
     </div>
     </div>
   </section>
@@ -291,18 +309,17 @@
     <h2>Résultats</h2>
     <div id="stats">
       <label>Nombre de requêtes envoyées:</label><span id="statTotal" class="count">0</span>
-      <label>HTTP status 200 / 2xx:</label><span id="statOk" class="count">0</span>
-      <label>HTTP status 429:</label><span id="stat429" class="count">0</span>
+      <label>HTTP status 200 / 2xx:</label><span id="statOk" class="countOK">0</span>
+      <label>HTTP status 429:</label><span id="stat429" class="countKO">0</span>
     </div>
     </br>
     <div class="row">
       <label>Nombre de sessions:</label><span id="nbSessions" class="count">0</span>
       <label>Nombre de sessions Guest:</label><span id="nbGuestSessions" class="count">0</span>
     </div>
-    <div class="row; footer-actions" style="margin-top:12px;">
+    <div class="row footer-actions">
       <button id="btnClearLog" class="secondary">Vider le journal</button>
     </div>
-    </br>
     <div id="log"></div>
   </section>
 
