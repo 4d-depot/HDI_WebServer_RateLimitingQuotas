@@ -149,11 +149,11 @@ Function getQuotas() : Object
 	return $result
 	
 	
-Function testNow()
+Function resetThisQuota($quotaName : Text)
 	
-	OPEN URL:C673("http://127.0.0.1/testQuotas.html")
-	
-	
+	WEB Server:C1674().quotas[$quotaName]:=Null:C1517
+	Form:C1466.proposedQuotas[$quotaName]:=0
+	Form:C1466.quotas:=This:C1470.getQuotas()
 	
 	
 Function sendDataToServer()

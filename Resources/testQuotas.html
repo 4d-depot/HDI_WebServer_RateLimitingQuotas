@@ -10,7 +10,7 @@
     --border:#e2e0da;
     --text:#2b2b28;
     --muted:#767268;
-    --accent:#2f6f4f;
+    --accent:#3AA2FB;
     --accent-dark:#204d37;
     --warn:#b3492f;
     --ok:#2f6f4f;
@@ -111,6 +111,7 @@
     background:var(--accent);
     color:#fff;
     padding:7px 14px;
+    margin:0px 0px 0px; 40px;
     border-radius:5px;
     font-size:13px;
     cursor:pointer;
@@ -118,8 +119,8 @@
   button:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
   button.secondary{
     background:#fff;
-    color:var(--text);
-    border-color:var(--border);
+    color:#3AA2FB;
+    border-color:#3AA2FB;
   }
   button.secondary:hover{background:#f2f1ed;}
   button:disabled{
@@ -211,7 +212,7 @@
     <h2>Requête unique</h2>
     <div class="row">
      <label class="blueLabel">1-</label>
-      <label>Générer des données de <input type="number" id="bodySize" value="1000" min="1">octets</label>
+      <label>Générer des données de <input style="text-align: center;" type="number" id="bodySize" value="1000" min="1">octets</label>
       <button id="btnPostBody">Envoyer ces données dans un POST</button>
       </br>
      <p class="info"> Ratios:
@@ -222,33 +223,34 @@
     </br>
     <div class="row">
       <label class="blueLabel">2-</label>
-      <label>Requêter des données de<input type="number" id="respSize" value="1000" min="1">octets</label>
+      <label>Requêter des données de<input style="text-align: center;" type="number" id="respSize" value="1000" min="1">octets</label>
       <button id="btnGetData">Requêter les données</button>
     </div>
   </section>
 
   <section>
     <h2>Rafale de requêtes</h2>
-    <p class="hint">Répète un type de requête en boucle pour atteindre rapidement un quota /min.</p>
+      
     <div class="row">
-      <label>Type
+    	  <label>Envoyer 1 requête toutes les <input style="text-align: center;" type="number" id="burstDelay" value="2" min="1">seconds</label>
+      	  <label>jusqu'à atteindre<input style="text-align: center;" type="number" id="burstCount" value="10" min="1"> requêtes</label>
+    </div>
+    <div class="row">
+      <label>Type de requête
         <select id="burstType">
-          <option value="body">POST avec corps</option>
+          <option value="body">POST avec données</option>
           <option value="data">GET</option>
         </select>
       </label>
-      <label>Taille à envoyer ou recevoir (octets) <input type="number" id="burstSize" value="1000" min="1"></label>
+      <label>Taille à envoyer ou recevoir (octets) <input style="text-align: center;" type="number" id="burstSize" value="1000" min="1"></label>
     </div>
-      <div class="row">
-    	  <label>Envoyer 1 requête toutes les <input type="number" id="burstDelay" value="2" min="1">seconds</label>
-      	  <label>jusqu'à atteindre<input type="number" id="burstCount" value="10" min="1"> requêtes</label>
-      </div>
- 
-    <div class="row"> 
-      <label><input type="checkbox" id="burstNewSession"> Nouvelle session à chaque requête</label>
 
-    <div class="row footer-actions">
-      <div class="row">
+     </br>
+    <div> 
+      <label><input type="checkbox" id="burstNewSession">Créer une nouvelle session à chaque requête</label>
+
+    <div class="row">
+      <div class="footer-actions">
         <button id="btnBurstStart">Lancer la rafale</button>
         <button id="btnBurstStop" class="secondary" disabled>Arrêter</button>
       </div>

@@ -86,7 +86,7 @@
 			"objects": {
 				"BtnContinueBackground2": {
 					"type": "rectangle",
-					"top": 481,
+					"top": 561,
 					"left": 310,
 					"width": 200,
 					"height": 40,
@@ -99,7 +99,7 @@
 				"Text2": {
 					"type": "text",
 					"text": "Apply",
-					"top": 490,
+					"top": 570,
 					"left": 310,
 					"width": 200,
 					"height": 0,
@@ -184,7 +184,7 @@
 				},
 				"BtnContinue2": {
 					"type": "button",
-					"top": 481,
+					"top": 561,
 					"left": 310,
 					"width": 200,
 					"height": 40,
@@ -269,7 +269,7 @@
 				},
 				"BtnContinueBackground3": {
 					"type": "rectangle",
-					"top": 541,
+					"top": 621,
 					"left": 310,
 					"width": 200,
 					"height": 40,
@@ -282,7 +282,7 @@
 				"Text3": {
 					"type": "text",
 					"text": "Test now",
-					"top": 550,
+					"top": 630,
 					"left": 310,
 					"width": 200,
 					"height": 0,
@@ -293,7 +293,7 @@
 				},
 				"BtnContinue3": {
 					"type": "button",
-					"top": 541,
+					"top": 621,
 					"left": 310,
 					"width": 200,
 					"height": 40,
@@ -310,6 +310,50 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue3.4dm"
+				},
+				"BtnContinueBackground4": {
+					"type": "rectangle",
+					"top": 681,
+					"left": 310,
+					"width": 200,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Reset this quota",
+					"top": 690,
+					"left": 310,
+					"width": 200,
+					"height": 0,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue4": {
+					"type": "button",
+					"top": 681,
+					"left": 310,
+					"width": 200,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue4.4dm"
 				}
 			}
 		},
@@ -934,7 +978,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 887,
+	"geometryStamp": 928,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
