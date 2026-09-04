@@ -91,6 +91,19 @@
     align-items:center;
     gap:6px;
   }
+  
+  .inputData{
+    font-size:15px;
+    color:var(--text);
+    font-weight:600;
+  }
+  
+  .count{
+    font-size:15px;
+    color:var(--muted);
+    display:flex;
+  }
+  
   input[type=number]{
     width:90px;
     padding:5px 7px;
@@ -138,8 +151,7 @@
     font-size:20px;
     font-weight:600;
   }
-  #stats div.n429 span{color:var(--warn);}
-  #stats div.n200 span{color:var(--ok);}
+
   #log{
     background:#1e1e1c;
     color:#d9d7cf;
@@ -156,9 +168,13 @@
   #log .lerr{color:#e08a6d;font-weight:bold;}
   .footer-actions{
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
+    gap:10px;
+    margin-top:16px;
+    width:100%;
   }
+  
   #quotas{
     background:var(--panel);
     border-bottom:1px solid var(--border);
@@ -212,7 +228,7 @@
     <h2>Requête unique</h2>
     <div class="row">
      <label class="blueLabel">1-</label>
-      <label>Générer des données de <input style="text-align: center;" type="number" id="bodySize" value="1000" min="1">octets</label>
+      <label>Générer des données de <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1">octets</label>
       <button id="btnPostBody">Envoyer ces données dans un POST</button>
       </br>
      <p class="info"> Ratios:
@@ -223,7 +239,7 @@
     </br>
     <div class="row">
       <label class="blueLabel">2-</label>
-      <label>Requêter des données de<input style="text-align: center;" type="number" id="respSize" value="1000" min="1">octets</label>
+      <label>Requêter des données de<input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1">octets</label>
       <button id="btnGetData">Requêter les données</button>
     </div>
   </section>
@@ -232,17 +248,17 @@
     <h2>Rafale de requêtes</h2>
       
     <div class="row">
-    	  <label>Envoyer 1 requête toutes les <input style="text-align: center;" type="number" id="burstDelay" value="2" min="1">seconds</label>
-      	  <label>jusqu'à atteindre<input style="text-align: center;" type="number" id="burstCount" value="10" min="1"> requêtes</label>
+    	  <label>Envoyer 1 requête toutes les <input style="text-align: center;"  class="inputData" type="number" id="burstDelay" value="2" min="1">seconds</label>
+      	  <label>jusqu'à atteindre<input style="text-align: center;"  class="inputData" type="number" id="burstCount" value="10" min="1"> requêtes</label>
     </div>
     <div class="row">
       <label>Type de requête
-        <select id="burstType">
+        <select id="burstType" class="inputData" >
           <option value="body">POST avec données</option>
           <option value="data">GET</option>
         </select>
       </label>
-      <label>Taille à envoyer ou recevoir (octets) <input style="text-align: center;" type="number" id="burstSize" value="1000" min="1"></label>
+      <label>Taille à envoyer ou recevoir (octets) <input style="text-align: center;"  class="inputData" type="number" id="burstSize" value="1000" min="1"></label>
     </div>
 
      </br>
@@ -261,13 +277,12 @@
 
   <section>
     <h2>Sessions concurrentes</h2>
-    <p class="hint">nbSessions / nbGuestSessions — chaque requête sans cookie ouvre une nouvelle session invitée (aucune connexion n'est faite).</p>
     <div class="row">
-      <label>Nombre de sessions (Guest) à ouvrir <input type="number" id="sessionCount" value="3" min="1"></label>
+      <label>Nombre de sessions (Guest) à ouvrir <input style="text-align: center;" class="inputData"  type="number" id="sessionCount" value="3" min="1"></label>
       <button id="btnOpenSessions">Ouvrir les sessions (Guest)</button>
     </div>
     <div class="row">
-      <label>Nombre de sessions à ouvrir avec authentification<input type="number" id="authenticatedSessionCount" value="1" min="1"></label>
+      <label>Nombre de sessions à ouvrir avec authentification<input style="text-align: center;" class="inputData"  type="number" id="authenticatedSessionCount" value="1" min="1"></label>
       <button id="btnOpenAndAuthenticateSessions">Ouvrir et authentifier les sessions</button>
     </div>
   </section>
@@ -275,15 +290,19 @@
   <section>
     <h2>Résultats</h2>
     <div id="stats">
-      <div class="n">Envoyées<span id="statTotal">0</span></div>
-      <div class="n200">200 / 2xx<span id="statOk">0</span></div>
-      <div class="n429">429<span id="stat429">0</span></div>
-      <div class="n">Nombre de sessions<span id="nbSessions">0</span></div>
-      <div class="n">Nombre de sessions Guest<span id="nbGuestSessions">0</span></div>
+      <label>Nombre de requêtes envoyées:</label><span id="statTotal" class="count">0</span>
+      <label>HTTP status 200 / 2xx:</label><span id="statOk" class="count">0</span>
+      <label>HTTP status 429:</label><span id="stat429" class="count">0</span>
     </div>
-    <div class="row" style="margin-top:12px;">
+    </br>
+    <div class="row">
+      <label>Nombre de sessions:</label><span id="nbSessions" class="count">0</span>
+      <label>Nombre de sessions Guest:</label><span id="nbGuestSessions" class="count">0</span>
+    </div>
+    <div class="row; footer-actions" style="margin-top:12px;">
       <button id="btnClearLog" class="secondary">Vider le journal</button>
     </div>
+    </br>
     <div id="log"></div>
   </section>
 
