@@ -30,7 +30,7 @@
   header h1{
     font-size:20px;
     font-weight:400;
-    color:#3AA2FB;
+    color:var(--accent);
   }
   header p{
     margin:0;
@@ -64,11 +64,13 @@
   }
 
  section p.hint{
+   font-weight:600;
     margin:0 0 14px;
     color:var(--ok);
-    font-size:15px;
+    font-size:16px;
     display:flex;
-    align-items:center;
+    justify-content:center;
+    width:100%;
   }
   .row{
     display:flex;
@@ -81,7 +83,7 @@
   .blueLabel{
     font-size:20px;
     font-weight:400;
-    color:#3AA2FB;
+    color:var(--accent);
   }
   
   .row:last-child{margin-bottom:0;}
@@ -148,11 +150,11 @@
     font-size:13px;
     cursor:pointer;
   }
-  button:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
+  button:hover{font-weight:600;}
   button.secondary{
     background:#fff;
-    color:#3AA2FB;
-    border-color:#3AA2FB;
+    color:var(--accent);
+    border-color:var(--accent);
   }
   button.secondary:hover{background:#f2f1ed;}
   button:disabled{
@@ -202,7 +204,7 @@
   #quotas .quotas-title{
     font-size:24px;
     font-weight:600;
-    color:#3AA2FB;
+    color:var(--accent);
     margin-bottom:8px;
   }
   #quotas .quotas-row{
@@ -251,7 +253,7 @@
       </br>
      <p class="info"> Ratios:
       </br>
-      - 1000 octets correspondent à 1687 octets envoyés au total
+      - 1000 octets correspondent à 1637 octets envoyés au total
       </p>
     </div>
     </br>
