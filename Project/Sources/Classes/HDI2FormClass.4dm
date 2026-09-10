@@ -48,7 +48,7 @@ Function formEventHandler($formEventCode : Integer)
 			Form:C1466.proposedQuotas:={inBytesPerMin: 3000}
 			
 			If (Not:C34(WEB Server:C1674().isRunning))
-				WEB Server:C1674().start()
+				WEB Server:C1674().start({sessionCookieSameSite: Web SameSite Lax:K73:36})
 				DELAY PROCESS:C323(Current process:C322; 60)
 			End if 
 			

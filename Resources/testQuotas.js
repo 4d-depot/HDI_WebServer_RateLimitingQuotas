@@ -119,13 +119,15 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
 // --- Requête unique : POST avec corps ---
 document.getElementById('btnPostBody').addEventListener('click', () => {
   const size = parseInt(document.getElementById('bodySize').value, 10) || 0;
-  sendRequest({ method: 'POST', body: makeBody(size) });
+  const newSession = document.getElementById('postNewSession').checked;
+  sendRequest({ method: 'POST', body: makeBody(size), newSession });
 });
 
 // --- Requête unique : GET avec taille de réponse demandée ---
 document.getElementById('btnGetData').addEventListener('click', () => {
   const size = parseInt(document.getElementById('respSize').value, 10) || 0;
-  sendRequest({ method: 'GET', querySize: size });
+  const newSession = document.getElementById('getNewSession').checked;
+  sendRequest({ method: 'GET', querySize: size, newSession });
 });
 
 // --- Rafale de requêtes ---
