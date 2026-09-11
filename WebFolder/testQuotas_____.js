@@ -3,7 +3,7 @@
 const BASE_URL = 'http://127.0.0.1/runDemo';
 
 // --- Etat global / statistiques ---
-const stats = { total: 0, ok: 0, e429: 0, nbSessions: 0, nbGuestSessions: 0};
+const stats = { total: 0, ok: 0, e429: 0 };
 let burstRunning = false;
 
 // --- Références DOM ---
@@ -11,8 +11,6 @@ const logEl = document.getElementById('log');
 const statTotalEl = document.getElementById('statTotal');
 const statOkEl = document.getElementById('statOk');
 const stat429El = document.getElementById('stat429');
-const statNbSessionsEl = document.getElementById('nbSessions');
-const statNbGuestSessionsEl = document.getElementById('nbGuestSessions');
 const burstProgressEl = document.getElementById('burstProgress');
 const btnBurstStart = document.getElementById('btnBurstStart');
 const btnBurstStop = document.getElementById('btnBurstStop');
@@ -54,8 +52,6 @@ function updateStats() {
   statTotalEl.textContent = stats.total;
   statOkEl.textContent = stats.ok;
   stat429El.textContent = stats.e429;
-  statNbSessionsEl.textContent = stats.nbSessions;
-  statNbGuestSessionsEl.textContent = stats.nbGuestSessions;
 }
 
 // Envoie une requête et journalise le résultat.
@@ -95,10 +91,6 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
       cssClass = 'l429';
     } else if (response.ok) {
       stats.ok++;
-      
-      if (newSession && authenticate == false) {
-           stats.nbSessions++;
-      }
     }
 
     const retryAfter = response.headers.get('Retry-After');
@@ -176,7 +168,7 @@ document.getElementById('btnOpenSessions').addEventListener('click', async () =>
 document.getElementById('btnOpenAndAuthenticateSessions').addEventListener('click', async () => {
   const count = parseInt(document.getElementById('authenticatedSessionCount').value, 10) || 0;
   for (let i = 1; i <= count; i++) {
-    await sendRequest({ method: 'GET', authenticate: true});
+    await sendRequest({ method: 'GET', newSession: true, authenticate: true });
   }
 });
 
@@ -188,7 +180,5 @@ document.getElementById('btnClearLog').addEventListener('click', () => {
   stats.total = 0;
   stats.ok = 0;
   stats.e429 = 0;
-  stats.nbSessions = 0;
-  stats.nbGuestSessions = 0;
   updateStats();
 });

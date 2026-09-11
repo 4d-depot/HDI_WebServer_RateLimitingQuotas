@@ -1,0 +1,16 @@
+{
+	"methods": {
+		"startComponentWebServer": {
+			"timeStamp": "2026-09-11T14:09:29Z",
+			"attributes": {
+				"shared": true
+			}
+		},
+		"stopComponentWebServer": {
+			"timeStamp": "2026-09-11T14:09:35Z",
+			"attributes": {
+				"shared": true
+			}
+		}
+	}
+}
