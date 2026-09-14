@@ -38,11 +38,19 @@
     font-size:14px;
   }
   main{
-    max-width:960px;
+    max-width:1200px;
     margin:0 auto;
     padding:5px 32px 64px;
     display:grid;
     gap:20px;
+  }
+  .single-request-columns{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:20px;
+  }
+  @media (max-width:700px){
+    .single-request-columns{grid-template-columns:1fr;}
   }
   section{
     background:var(--panel);
@@ -60,7 +68,7 @@
     font-size:14px;
     font-weight:400;
     color:var(--muted);
-    margin:0 0 0 30px;
+    margin: 30px 0 0 0px;
   }
 
  section p.hint{
@@ -139,7 +147,7 @@
     font-size:13px;
     background:#fff;
   }
-  input[type=checkbox]{margin:0;}
+  input[type=checkbox]{margin: 0}
   button{
     border:1px solid var(--accent);
     background:var(--accent);
@@ -253,27 +261,36 @@
     </div>
   </section>
 
-  <section>
-    <h2>Requête unique</h2>
-    <div class="row">
-     <label class="blueLabel">1-</label>
-      <label>Générer des données de <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1">octets</label>
-      <button id="btnPostBody">Envoyer ces données dans un POST</button>
+  <div class="single-request-columns">
+    <section>
+      <h2>Envoyer des données (requête unique)</h2>
+      <div class="row">
+       <label class="blueLabel">1-</label>
+        <label>Générer des données de <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1">octets</label>
+        <button id="btnPostBody">Envoyer ces données dans un POST</button>
+        </br>
+       <p class="info"> Ratios:
+        - 1000 octets correspondent à 1637 octets envoyés au total
+        </p>
+        <p> 
+            <label><input type="checkbox" id="postNewSession">Créer une nouvelle session pour cette requête</label>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Requêter des données (requête unique)</h2>
       </br>
-     <p class="info"> Ratios:
-      </br>
-      - 1000 octets correspondent à 1637 octets envoyés au total
-      </p>
-      <label><input type="checkbox" id="postNewSession">Créer une nouvelle session pour cette requête</label>
-    </div>
-    </br>
-    <div class="row">
-      <label class="blueLabel">2-</label>
-      <label>Requêter des données de<input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1">octets</label>
-      <button id="btnGetData">Requêter les données</button>
-      <label><input type="checkbox" id="getNewSession">Créer une nouvelle session pour cette requête</label>
-    </div>
-  </section>
+      <div class="row">
+        <label class="blueLabel">2-</label>
+        <label>Requêter des données de<input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1">octets</label>
+        <button id="btnGetData">Requêter les données</button>
+           <p>
+              <label><input type="checkbox" id="getNewSession">Créer une nouvelle session pour cette requête</label>
+          </p>
+      </div>
+    </section>
+  </div>
 
   <section>
     <h2>Rafale de requêtes</h2>

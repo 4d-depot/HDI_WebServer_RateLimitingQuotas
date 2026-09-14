@@ -196,12 +196,12 @@
 					"type": "text",
 					"top": 420,
 					"left": 50,
-					"width": 240,
+					"width": 320,
 					"height": 30,
 					"stroke": "#289FE8",
 					"fontSize": 20,
 					"fontWeight": "bold",
-					"text": "Web server settings"
+					"text": "Update web server settings"
 				},
 				"Line2": {
 					"type": "line",
@@ -228,17 +228,17 @@
 				"StepNumber8": {
 					"type": "text",
 					"top": 420,
-					"left": 240,
-					"width": 120,
+					"left": 650,
+					"width": 250,
 					"height": 30,
 					"stroke": "#289FE8",
 					"fontSize": 20,
 					"fontWeight": "normal",
-					"text": "(quotas)"
+					"text": "Web server().quotas"
 				},
 				"InputText9": {
 					"type": "input",
-					"top": 420,
+					"top": 450,
 					"left": 650,
 					"width": 300,
 					"height": 300,
@@ -769,7 +769,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 1341,
+	"geometryStamp": 1397,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
