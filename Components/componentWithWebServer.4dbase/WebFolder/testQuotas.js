@@ -11,9 +11,12 @@ const logEl = document.getElementById('log');
 const statTotalEl = document.getElementById('statTotal');
 const statOkEl = document.getElementById('statOk');
 const stat429El = document.getElementById('stat429');
-const burstProgressEl = document.getElementById('burstProgress');
-const btnBurstStart = document.getElementById('btnBurstStart');
-const btnBurstStop = document.getElementById('btnBurstStop');
+const burstPostProgressEl = document.getElementById('burstPostProgress');
+const burstGetProgressEl = document.getElementById('burstGetProgress');
+const btnBurstPostStart = document.getElementById('btnBurstPostStart');
+const btnBurstGetStart = document.getElementById('btnBurstGetStart');
+const btnBurstPostStop = document.getElementById('btnBurstPostStop');
+const btnBurstGetStop = document.getElementById('btnBurstGetStop');
 const nbSessionsEl = document.getElementById('nbSessions');
 const nbGuestSessionsEl = document.getElementById('nbGuestSessions');
 const btnRefreshSessions = document.getElementById('btnRefreshSessions');
@@ -144,42 +147,57 @@ document.getElementById('btnGetData').addEventListener('click', async () => {
 });
 
 // --- Rafale de requêtes ---
-function buildBurstRequestOptions() {
-  const type = document.getElementById('burstType').value;
-  const size = parseInt(document.getElementById('burstSize').value, 10) || 0;
-  const newSession = document.getElementById('burstNewSession').checked;
+function buildBurstRequestOptions(type) {
+  const prefix = type === 'POST' ? 'burstPost' : 'burstGet';
+  const size = parseInt(document.getElementById(`${prefix}Size`).value, 10) || 0;
+  const newSession = document.getElementById(`${prefix}NewSession`).checked;
 
-  if (type === 'body') return { method: 'POST', body: makeBody(size), newSession };
-  if (type === 'data') return { method: 'GET', querySize: size, newSession };
+  if (type === 'POST') return { method: 'POST', body: makeBody(size), newSession };
+  return { method: 'GET', querySize: size, newSession };
 }
 
-btnBurstStart.addEventListener('click', async () => {
-  const count = parseInt(document.getElementById('burstCount').value, 10) || 0;
-  const delay = parseInt(document.getElementById('burstDelay').value, 10) || 0;
+async function startBurst(type) {
+  const prefix = type === 'POST' ? 'burstPost' : 'burstGet';
+  const progressEl = type === 'POST' ? burstPostProgressEl : burstGetProgressEl;
+//  const startButton = type === 'POST' ? btnBurstPostStart : btnBurstGetStart;
+  const stopButton = type === 'POST' ? btnBurstPostStop : btnBurstGetStop;
+  const count = parseInt(document.getElementById(`${prefix}Count`).value, 10) || 0;
+  const delay = parseInt(document.getElementById(`${prefix}Delay`).value, 10) || 0;
 
   burstRunning = true;
-  btnBurstStart.disabled = true;
-  btnBurstStop.disabled = false;
+  btnBurstPostStart.disabled = true;
+  btnBurstGetStart.disabled = true;
+  stopButton.disabled = false;
 
   for (let i = 1; i <= count && burstRunning; i++) {
-    burstProgressEl.textContent = `Requête ${i} / ${count}`;
-    await sendRequest(buildBurstRequestOptions());
+    progressEl.textContent = `Requête ${i} / ${count}`;
+    await sendRequest(buildBurstRequestOptions(type));
     if (delay > 0 && i < count) {
       await new Promise((resolve) => setTimeout(resolve, delay * 1000));
     }
   }
 
-  burstProgressEl.textContent = burstRunning ? 'Rafale terminée' : 'Rafale arrêtée';
+  progressEl.textContent = burstRunning ? 'Rafale terminée' : 'Rafale arrêtée';
   burstRunning = false;
-  btnBurstStart.disabled = false;
-  btnBurstStop.disabled = true;
+ // startButton.disabled = false;
+  btnBurstPostStart.disabled = false;
+  btnBurstGetStart.disabled = false;
+  btnBurstPostStop.disabled = true;
+  btnBurstGetStop.disabled = true;
   await loadSessionCounts();
-});
+}
 
-btnBurstStop.addEventListener('click', async () => {
+btnBurstPostStart.addEventListener('click', () => startBurst('POST'));
+btnBurstGetStart.addEventListener('click', () => startBurst('GET'));
+
+async function stopBurst(stopButton) {
   burstRunning = false;
+  stopButton.disabled = true;
   await loadSessionCounts();
-});
+}
+
+btnBurstPostStop.addEventListener('click', () => stopBurst(btnBurstPostStop));
+btnBurstGetStop.addEventListener('click', () => stopBurst(btnBurstGetStop));
 
 // --- Sessions concurrentes  ---
 document.getElementById('btnOpenSessions').addEventListener('click', async () => {
@@ -208,5 +226,4 @@ document.getElementById('btnClearLog').addEventListener('click', () => {
   stats.ok = 0;
   stats.e429 = 0;
   updateStats();
-  loadSessionCounts();
 });

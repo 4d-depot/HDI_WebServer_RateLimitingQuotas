@@ -49,8 +49,14 @@
     grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:20px;
   }
+  .burst-columns{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:20px;
+  }
   @media (max-width:700px){
-    .single-request-columns{grid-template-columns:1fr;}
+    .single-request-columns,
+    .burst-columns{grid-template-columns:1fr;}
   }
   section{
     background:var(--panel);
@@ -292,36 +298,51 @@
     </section>
   </div>
 
-  <section>
-    <h2>Rafale de requêtes</h2>
-      
-    <div class="row">
-    	  <label>Envoyer 1 requête toutes les <input style="text-align: center;"  class="inputData" type="number" id="burstDelay" value="2" min="1">seconds</label>
-      	  <label>jusqu'à atteindre<input style="text-align: center;"  class="inputData" type="number" id="burstCount" value="10" min="1"> requêtes</label>
-    </div>
-    <div class="row">
-      <label>Type de requête
-        <select id="burstType" class="inputData" >
-          <option value="body">POST avec données</option>
-          <option value="data">GET</option>
-        </select>
-      </label>
-      <label>Taille à envoyer ou recevoir (octets) <input style="text-align: center;"  class="inputData" type="number" id="burstSize" value="1000" min="1"></label>
-    </div>
-
-     </br>
-    <div> 
-      <label><input type="checkbox" id="burstNewSession">Créer une nouvelle session à chaque requête</label>
-
-    <div class="row">
-      <div class="footer-actions">
-        <button id="btnBurstStart">Lancer la rafale</button>
-        <button id="btnBurstStop" class="secondary" disabled>Arrêter</button>
+  <div class="burst-columns">
+    <section>
+      <h2>Envoyer des données (rafale de requêtes)</h2>
+      <p class="info">Ces requêtes utilisent la méthode POST.</p>
+      <div class="row">
+        <label>Envoyer des données toutes les <input style="text-align: center;" class="inputData" type="number" id="burstPostDelay" value="2" min="1"> secondes</label>
+        <label>jusqu'à atteindre <input style="text-align: center;" class="inputData" type="number" id="burstPostCount" value="10" min="1"> requêtes</label>
       </div>
-      <p class="hint" id="burstProgress"></p>
-    </div>
-    </div>
-  </section>
+      <div class="row">
+        <label>Taille à envoyer : <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> octets</label>
+      </div>
+      <div class="row">
+        <label><input type="checkbox" id="burstPostNewSession">Créer une nouvelle session à chaque requête</label>
+      </div>
+      <div class="row">
+        <div class="footer-actions">
+          <button id="btnBurstPostStart">Lancer la rafale POST</button>
+          <button id="btnBurstPostStop" class="secondary" disabled>Arrêter la rafale POST</button>
+        </div>
+        <p class="hint" id="burstPostProgress"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Requêter des données (rafale de requêtes)</h2>
+      <p class="info">Ces requêtes utilisent la méthode GET.</p>
+      <div class="row">
+        <label>Requêter des données toutes les <input style="text-align: center;" class="inputData" type="number" id="burstGetDelay" value="2" min="1"> secondes</label>
+        <label>jusqu'à atteindre <input style="text-align: center;" class="inputData" type="number" id="burstGetCount" value="10" min="1"> requêtes</label>
+      </div>
+      <div class="row">
+        <label>Taille à requêter : <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> octets</label>
+      </div>
+      <div class="row">
+        <label><input type="checkbox" id="burstGetNewSession">Créer une nouvelle session à chaque requête</label>
+      </div>
+      <div class="row">
+        <div class="footer-actions">
+          <button id="btnBurstGetStart">Lancer la rafale GET</button>
+          <button id="btnBurstGetStop" class="secondary" disabled>Arrêter la rafale GET</button>
+        </div>
+        <p class="hint" id="burstGetProgress"></p>
+      </div>
+    </section>
+  </div>
 
   <section>
     <h2>Sessions concurrentes</h2>
