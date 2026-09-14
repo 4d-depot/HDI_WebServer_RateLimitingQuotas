@@ -69,7 +69,7 @@ async function loadSessionCounts() {
     nbSessionsEl.textContent = quotas.nbSessions ?? 0;
     nbGuestSessionsEl.textContent = quotas.nbGuestSessions ?? 0;
   } catch (err) {
-    logLine(`Impossible de charger le nombre de sessions: ${err.message}`, 'lerr');
+    logLine(`Unable to load the number of sessions: ${err.message}`, 'lerr');
   }
 }
 
@@ -116,15 +116,15 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
     }
 
     const retryAfter = response.headers.get('Retry-After');
-    let details = `${timestamp()}  ${method.padEnd(4)} ${url}  →  ${response.status}  (${duration}ms, envoyé ${sentBytes}o, reçu ${receivedBytes}o)`;
+    let details = `${timestamp()}  ${method.padEnd(4)} ${url}  →  ${response.status}  (${duration}ms, sent ${sentBytes} bytes, received ${receivedBytes} bytes)`;
     if (retryAfter !== null) details += `  Retry-After: "${retryAfter}"`;
-    if (newSession) details += '  [nouvelle session]';
+    if (newSession) details += '  [new session]';
 
     logLine(details, cssClass);
     updateStats();
     return response;
   } catch (err) {
-    logLine(`${timestamp()}  ${method.padEnd(4)} ${url}  →  ERREUR: ${err.message}`, 'lerr');
+    logLine(`${timestamp()}  ${method.padEnd(4)} ${url}  →  ERROR: ${err.message}`, 'lerr');
     updateStats();
     return null;
   }
@@ -170,14 +170,14 @@ async function startBurst(type) {
   stopButton.disabled = false;
 
   for (let i = 1; i <= count && burstRunning; i++) {
-    progressEl.textContent = `Requête ${i} / ${count}`;
+    progressEl.textContent = `Request ${i} / ${count}`;
     await sendRequest(buildBurstRequestOptions(type));
     if (delay > 0 && i < count) {
       await new Promise((resolve) => setTimeout(resolve, delay * 1000));
     }
   }
 
-  progressEl.textContent = burstRunning ? 'Rafale terminée' : 'Rafale arrêtée';
+  progressEl.textContent = burstRunning ? 'Burst completed' : 'Burst stopped';
   burstRunning = false;
  // startButton.disabled = false;
   btnBurstPostStart.disabled = false;

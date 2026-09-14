@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Démo Rate Limiting — 4D Web Server</title>
+<title>Rate Limiting Demo - 4D Web Server</title>
 <style>
   :root{
     --bg:#fafaf8;
@@ -254,45 +254,45 @@
 
 
 <header>
-  <h1 style="text-align: center;">Démo Rate Limiting — 4D Web Server</h1>
+  <h1 style="text-align: center;">Rate Limiting Demo - 4D Web Server</h1>
 </header>
 
 <main>
   <section>
-    <h2>Valeurs actuelles</h2>
+    <h2>Current Values</h2>
     <div id="stats" class="row">
-      <label>Nombre de sessions:</label><span id="nbSessions" class="count">0</span>
-      <label>Nombre de sessions Guest:</label><span id="nbGuestSessions" class="count">0</span>
+      <label>Number of sessions:</label><span id="nbSessions" class="count">0</span>
+      <label>Number of Guest sessions:</label><span id="nbGuestSessions" class="count">0</span>
       <button id="btnRefreshSessions" type="button">Refresh</button>
     </div>
   </section>
 
   <div class="single-request-columns">
     <section>
-      <h2>Envoyer des données (requête unique)</h2>
+      <h2>Send Data (Single Request)</h2>
       <div class="row">
        <label class="blueLabel">1-</label>
-        <label>Générer des données de <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1">octets</label>
-        <button id="btnPostBody">Envoyer ces données dans un POST</button>
+        <label>Generate <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1"> bytes of data</label>
+        <button id="btnPostBody">Send this data in a POST</button>
         </br>
-       <p class="info"> Ratios:
-        - 1000 octets correspondent à 1637 octets envoyés au total
+         <p class="info"> Ratios:
+        - 1000 bytes correspond to 1637 bytes sent in total
         </p>
         <p> 
-            <label><input type="checkbox" id="postNewSession">Créer une nouvelle session pour cette requête</label>
+          <label><input type="checkbox" id="postNewSession">Create a new session for this request</label>
         </p>
       </div>
     </section>
 
     <section>
-      <h2>Requêter des données (requête unique)</h2>
+      <h2>Request Data (Single Request)</h2>
       </br>
       <div class="row">
         <label class="blueLabel">2-</label>
-        <label>Requêter des données de<input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1">octets</label>
-        <button id="btnGetData">Requêter les données</button>
+          <label>Request <input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1"> bytes of data</label>
+          <button id="btnGetData">Request Data</button>
            <p>
-              <label><input type="checkbox" id="getNewSession">Créer une nouvelle session pour cette requête</label>
+            <label><input type="checkbox" id="getNewSession">Create a new session for this request</label>
           </p>
       </div>
     </section>
@@ -300,44 +300,44 @@
 
   <div class="burst-columns">
     <section>
-      <h2>Envoyer des données (rafale de requêtes)</h2>
-      <p class="info">Ces requêtes utilisent la méthode POST.</p>
+      <h2>Send Data (Request Burst)</h2>
+
       <div class="row">
-        <label>Envoyer des données toutes les <input style="text-align: center;" class="inputData" type="number" id="burstPostDelay" value="2" min="1"> secondes</label>
-        <label>jusqu'à atteindre <input style="text-align: center;" class="inputData" type="number" id="burstPostCount" value="10" min="1"> requêtes</label>
+        <label>Send data every <input style="text-align: center;" class="inputData" type="number" id="burstPostDelay" value="2" min="1"> seconds</label>
+        <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstPostCount" value="10" min="1"> requests</label>
       </div>
       <div class="row">
-        <label>Taille à envoyer : <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> octets</label>
+        <label>Size to send: <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> bytes</label>
       </div>
       <div class="row">
-        <label><input type="checkbox" id="burstPostNewSession">Créer une nouvelle session à chaque requête</label>
+        <label><input type="checkbox" id="burstPostNewSession">Create a new session for each request</label>
       </div>
       <div class="row">
         <div class="footer-actions">
-          <button id="btnBurstPostStart">Lancer la rafale POST</button>
-          <button id="btnBurstPostStop" class="secondary" disabled>Arrêter la rafale POST</button>
+          <button id="btnBurstPostStart">Start POST Burst</button>
+          <button id="btnBurstPostStop" class="secondary" disabled>Stop POST Burst</button>
         </div>
         <p class="hint" id="burstPostProgress"></p>
       </div>
     </section>
 
     <section>
-      <h2>Requêter des données (rafale de requêtes)</h2>
-      <p class="info">Ces requêtes utilisent la méthode GET.</p>
+      <h2>Request Data (Request Burst)</h2>
+     
       <div class="row">
-        <label>Requêter des données toutes les <input style="text-align: center;" class="inputData" type="number" id="burstGetDelay" value="2" min="1"> secondes</label>
-        <label>jusqu'à atteindre <input style="text-align: center;" class="inputData" type="number" id="burstGetCount" value="10" min="1"> requêtes</label>
+        <label>Request data every <input style="text-align: center;" class="inputData" type="number" id="burstGetDelay" value="2" min="1"> seconds</label>
+        <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstGetCount" value="10" min="1"> requests</label>
       </div>
       <div class="row">
-        <label>Taille à requêter : <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> octets</label>
+        <label>Size to request: <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> bytes</label>
       </div>
       <div class="row">
-        <label><input type="checkbox" id="burstGetNewSession">Créer une nouvelle session à chaque requête</label>
+        <label><input type="checkbox" id="burstGetNewSession">Create a new session for each request</label>
       </div>
       <div class="row">
         <div class="footer-actions">
-          <button id="btnBurstGetStart">Lancer la rafale GET</button>
-          <button id="btnBurstGetStop" class="secondary" disabled>Arrêter la rafale GET</button>
+          <button id="btnBurstGetStart">Start GET Burst</button>
+          <button id="btnBurstGetStop" class="secondary" disabled>Stop GET Burst</button>
         </div>
         <p class="hint" id="burstGetProgress"></p>
       </div>
@@ -345,26 +345,26 @@
   </div>
 
   <section>
-    <h2>Sessions concurrentes</h2>
+    <h2>Concurrent Sessions</h2>
     <div class="row">
-      <label>Nombre de sessions (Guest) à ouvrir <input style="text-align: center;" class="inputData"  type="number" id="sessionCount" value="3" min="1"></label>
-      <button id="btnOpenSessions">Ouvrir les sessions (Guest)</button>
+      <label>Number of Guest sessions to open <input style="text-align: center;" class="inputData"  type="number" id="sessionCount" value="3" min="1"></label>
+      <button id="btnOpenSessions">Open Guest Sessions</button>
     </div>
     <div class="row">
-      <label>Nombre de sessions à ouvrir avec authentification<input style="text-align: center;" class="inputData"  type="number" id="authenticatedSessionCount" value="1" min="1"></label>
-      <button id="btnOpenAndAuthenticateSessions">Ouvrir et authentifier les sessions</button>
+      <label>Number of authenticated sessions to open <input style="text-align: center;" class="inputData"  type="number" id="authenticatedSessionCount" value="1" min="1"></label>
+      <button id="btnOpenAndAuthenticateSessions">Open and Authenticate Sessions</button>
     </div>
   </section>
 
   <section>
-    <h2>Résultats</h2>
+    <h2>Results</h2>
     <div id="stats">
-      <label>Nombre de requêtes envoyées:</label><span id="statTotal" class="count">0</span>
+      <label>Number of requests sent:</label><span id="statTotal" class="count">0</span>
       <label>HTTP status 200 / 2xx:</label><span id="statOk" class="countOK">0</span>
       <label>HTTP status 429:</label><span id="stat429" class="countKO">0</span>
     </div>
     <div class="row footer-actions">
-      <button id="btnClearLog" class="secondary">Vider le journal</button>
+      <button id="btnClearLog" class="secondary">Clear Log</button>
     </div>
     <div id="log"></div>
   </section>

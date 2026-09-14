@@ -44,72 +44,22 @@ Function formEventHandler($formEventCode : Integer)
 			
 			InitInfo
 			
-			
-			Form:C1466.proposedQuotas:={inBytesPerMin: 3000}
-			
 			If (Not:C34(WEB Server:C1674().isRunning))
-				WEB Server:C1674().start({sessionCookieSameSite: Web SameSite Lax:K73:36})
+				//WEB Server().start({sessionCookieSameSite: Web SameSite Lax})
+				WEB Server:C1674().start()
 				DELAY PROCESS:C323(Current process:C322; 60)
 			End if 
 			
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10}
 			This:C1470.resetQuotas()
-			
 			Form:C1466.quotas:=This:C1470.getQuotas()
-			
-			//$files:=Folder("/RESOURCES/files/").files()
-			
-			//$file_1000:=$files.query("name = :1"; "file_1000_bytes").first()  // 1000 bytes gives
-			//$file_500:=$files.query("name = :1"; "file_500_bytes").first()  // 500 bytes gives 
-			//Form.file_60:=$files.query("name = :1"; "file_60_bytes").first()  // 60 bytes gives 343 bytes sent to the server
-			
-			//Form.urlGetData60:="http://localhost/getContent?size=60"
-			//Form.urlGetData120:="http://localhost/getContent?size=120"
-			
-			
-			//Form.body:=Form.file_60.getText()
-			//Form.data60:=True
-			//Form.data120:=False
 			
 			manageTexts
 			
 			
 		: ($formEventCode=On Page Change:K2:54)
 			
-			Case of 
-					
-				: (FORM Get current page:C276=2)
-					
-					
-					
-					
-					//: (FORM Get current page=3)
-					
-					//If (Not(WEB Server().isRunning))
-					//WEB Server().start({quotas: {inBytesPerMin: 350; outBytesPerMin: Null}})
-					//DELAY PROCESS(Current process; 60)
-					//Else 
-					//WEB Server().quotas.inBytesPerMin:=350
-					//WEB Server().quotas.outBytesPerMin:=Null
-					//End if 
-					
-					
-					//: (FORM Get current page=4)
-					//If (Not(WEB Server().isRunning))
-					//WEB Server().start({quotas: {outBytesPerMin: 130; inBytesPerMin: Null}})
-					//DELAY PROCESS(Current process; 60)
-					//Else 
-					//WEB Server().quotas.outBytesPerMin:=130
-					//WEB Server().quotas.inBytesPerMin:=Null
-					//End if 
-					
-					//Form.attempts:=0
-					
-					
-					
-			End case 
-			
-			//Form.quotas:=WEB Server().quotas
-			
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10}
 			
 		: (Form event code:C388=On Close Box:K2:21)
 			If (Is Windows:C1573 && Application info:C1599().SDIMode)

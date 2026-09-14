@@ -87,7 +87,7 @@
 				"BtnContinueBackground2": {
 					"type": "rectangle",
 					"top": 510,
-					"left": 300,
+					"left": 340,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -100,7 +100,7 @@
 					"type": "text",
 					"text": "Apply",
 					"top": 519,
-					"left": 300,
+					"left": 340,
 					"width": 120,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -142,19 +142,20 @@
 				"LabelInputText12": {
 					"type": "text",
 					"top": 520,
-					"left": 50,
+					"left": 70,
 					"width": 150,
 					"height": 20,
 					"sizingX": "grow",
 					"stroke": "#26334D",
 					"text": "inBytesPerMin",
 					"fontSize": 18,
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"textAlign": "right"
 				},
 				"InputText10": {
 					"type": "input",
 					"top": 510,
-					"left": 200,
+					"left": 240,
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
@@ -175,7 +176,7 @@
 				"BtnContinue2": {
 					"type": "button",
 					"top": 510,
-					"left": 300,
+					"left": 340,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -260,7 +261,7 @@
 				"BtnContinueBackground3": {
 					"type": "rectangle",
 					"top": 590,
-					"left": 370,
+					"left": 410,
 					"width": 130,
 					"height": 40,
 					"sizingX": "move",
@@ -273,7 +274,7 @@
 					"type": "text",
 					"text": "Test now",
 					"top": 599,
-					"left": 370,
+					"left": 410,
 					"width": 130,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -284,7 +285,7 @@
 				"BtnContinue3": {
 					"type": "button",
 					"top": 590,
-					"left": 370,
+					"left": 410,
 					"width": 130,
 					"height": 40,
 					"sizingX": "move",
@@ -304,7 +305,7 @@
 				"BtnContinueBackground4": {
 					"type": "rectangle",
 					"top": 510,
-					"left": 440,
+					"left": 480,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -317,7 +318,7 @@
 					"type": "text",
 					"text": "Reset",
 					"top": 519,
-					"left": 440,
+					"left": 480,
 					"width": 120,
 					"height": 0,
 					"stroke": "#289FE8",
@@ -328,7 +329,7 @@
 				"BtnContinue4": {
 					"type": "button",
 					"top": 510,
-					"left": 440,
+					"left": 480,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -351,8 +352,8 @@
 			"objects": {
 				"BtnContinueBackground1": {
 					"type": "rectangle",
-					"top": 326,
-					"left": 328,
+					"top": 510,
+					"left": 340,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -364,8 +365,8 @@
 				"Text1": {
 					"type": "text",
 					"text": "Apply",
-					"top": 335,
-					"left": 328,
+					"top": 519,
+					"left": 340,
 					"width": 120,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -378,7 +379,7 @@
 					"top": 70,
 					"left": 60,
 					"width": 900,
-					"height": 100,
+					"height": 300,
 					"sizingY": "grow",
 					"borderRadius": 8,
 					"stroke": "transparent",
@@ -400,30 +401,31 @@
 					"top": 70,
 					"left": 60,
 					"width": 5,
-					"height": 100,
+					"height": 300,
 					"stroke": "transparent",
 					"fill": "#289FE8"
 				},
 				"LabelInputText1": {
 					"type": "text",
-					"top": 324,
-					"left": 50,
+					"top": 520,
+					"left": 70,
 					"width": 150,
-					"height": 18,
+					"height": 20,
 					"sizingX": "grow",
 					"stroke": "#26334D",
-					"text": "inBytesPerMin",
+					"text": "outBytesPerMin",
 					"fontSize": 18,
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"textAlign": "right"
 				},
 				"InputText1": {
 					"type": "input",
-					"top": 326,
-					"left": 190,
+					"top": 510,
+					"left": 240,
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
-					"dataSource": "Form:C1466.proposedQuotas.inBytesPerMin",
+					"dataSource": "Form:C1466.proposedQuotas.outBytesPerMin",
 					"dataSourceTypeHint": "integer",
 					"fill": "#FBFCFE",
 					"stroke": "#26334D",
@@ -439,8 +441,8 @@
 				},
 				"BtnContinue1": {
 					"type": "button",
-					"top": 326,
-					"left": 328,
+					"top": 510,
+					"left": 340,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -459,32 +461,32 @@
 				},
 				"StepNumber2": {
 					"type": "text",
-					"top": 253,
+					"top": 420,
 					"left": 50,
-					"width": 240,
-					"height": 28,
+					"width": 320,
+					"height": 30,
 					"stroke": "#289FE8",
 					"fontSize": 20,
 					"fontWeight": "bold",
-					"text": "Web server settings"
+					"text": "Update web server settings"
 				},
 				"Line3": {
 					"type": "line",
-					"top": 220,
-					"left": 607,
+					"top": 390,
+					"left": 620,
 					"width": 0,
-					"height": 400,
+					"height": 380,
 					"stroke": "#289FE8"
 				},
 				"Input2": {
 					"type": "input",
-					"left": 104,
+					"left": 100,
 					"top": 120,
 					"width": 831,
-					"height": 100,
+					"height": 240,
 					"enterable": false,
 					"focusable": false,
-					"dataSource": "Infos[2].Description",
+					"dataSource": "Infos[1].Description",
 					"fill": "transparent",
 					"borderStyle": "none",
 					"fontSize": 14,
@@ -492,19 +494,19 @@
 				},
 				"StepNumber4": {
 					"type": "text",
-					"top": 282,
-					"left": 50,
-					"width": 240,
-					"height": 28,
+					"top": 420,
+					"left": 650,
+					"width": 250,
+					"height": 30,
 					"stroke": "#289FE8",
 					"fontSize": 20,
 					"fontWeight": "normal",
-					"text": "Quotas:"
+					"text": "Web server().quotas"
 				},
 				"InputText2": {
 					"type": "input",
-					"top": 241,
-					"left": 648,
+					"top": 450,
+					"left": 650,
 					"width": 300,
 					"height": 300,
 					"sizingX": "grow",
@@ -524,8 +526,8 @@
 				},
 				"BtnContinueBackground5": {
 					"type": "rectangle",
-					"top": 386,
-					"left": 328,
+					"top": 590,
+					"left": 410,
 					"width": 130,
 					"height": 40,
 					"sizingX": "move",
@@ -534,11 +536,11 @@
 					"stroke": "transparent",
 					"fill": "#3AA2FB"
 				},
-				"Text6": {
+				"Text5": {
 					"type": "text",
 					"text": "Test now",
-					"top": 395,
-					"left": 328,
+					"top": 599,
+					"left": 410,
 					"width": 130,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -548,8 +550,8 @@
 				},
 				"BtnContinue5": {
 					"type": "button",
-					"top": 386,
-					"left": 328,
+					"top": 590,
+					"left": 410,
 					"width": 130,
 					"height": 40,
 					"sizingX": "move",
@@ -568,32 +570,32 @@
 				},
 				"BtnContinueBackground6": {
 					"type": "rectangle",
-					"top": 446,
-					"left": 328,
+					"top": 510,
+					"left": 480,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
 					"sizingY": "move",
 					"borderRadius": 6,
-					"stroke": "transparent",
-					"fill": "#3AA2FB"
+					"stroke": "#289FE8",
+					"fill": "#FFFFFF"
 				},
-				"Text8": {
+				"Text6": {
 					"type": "text",
 					"text": "Reset",
-					"top": 455,
-					"left": 328,
+					"top": 519,
+					"left": 480,
 					"width": 120,
 					"height": 0,
-					"stroke": "#FFFFFF",
+					"stroke": "#289FE8",
 					"textAlign": "center",
 					"fontWeight": "bold",
 					"fontSize": 18
 				},
 				"BtnContinue6": {
 					"type": "button",
-					"top": 446,
-					"left": 328,
+					"top": 510,
+					"left": 480,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -609,35 +611,35 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue6.4dm"
-				},
-				"Text9": {
-					"type": "text",
-					"text": "Apply",
-					"top": 507,
-					"left": 328,
-					"width": 200,
-					"height": 0,
-					"stroke": "#FFFFFF",
-					"textAlign": "center",
-					"fontWeight": "bold",
-					"fontSize": 18
-				},
-				"Text10": {
-					"type": "text",
-					"text": "Reset this quota",
-					"top": 757,
-					"left": 328,
-					"width": 200,
-					"height": 0,
-					"stroke": "#FFFFFF",
-					"textAlign": "center",
-					"fontWeight": "bold",
-					"fontSize": 18
 				}
 			}
 		},
 		{
 			"objects": {
+				"BtnContinueBackground7": {
+					"type": "rectangle",
+					"top": 510,
+					"left": 340,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text7": {
+					"type": "text",
+					"text": "Apply",
+					"top": 519,
+					"left": 340,
+					"width": 120,
+					"height": 0,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
 				"SidePanel1": {
 					"type": "rectangle",
 					"top": 70,
@@ -658,17 +660,7 @@
 					"stroke": "#289FE8",
 					"fontSize": 20,
 					"fontWeight": "bold",
-					"text": "Rate limiting for outbound traffic"
-				},
-				"StepDescription1": {
-					"type": "text",
-					"top": 82,
-					"left": 553,
-					"width": 376,
-					"height": 15,
-					"stroke": "#718096",
-					"fontSize": 12,
-					"text": "Quelques informations suffisent pour commencer."
+					"text": "Rate limiting for inbound traffic"
 				},
 				"ActiveStep1": {
 					"type": "rectangle",
@@ -679,40 +671,27 @@
 					"stroke": "transparent",
 					"fill": "#289FE8"
 				},
-				"Input1": {
-					"type": "input",
-					"left": 104,
-					"top": 120,
-					"width": 831,
-					"height": 205,
-					"enterable": false,
-					"focusable": false,
-					"dataSource": "Infos[3].Description",
-					"fill": "transparent",
-					"borderStyle": "none",
-					"fontSize": 14,
-					"styledText": true
-				},
-				"LabelInputText11": {
+				"LabelInputText2": {
 					"type": "text",
-					"top": 616,
-					"left": 38,
-					"width": 250,
-					"height": 18,
+					"top": 520,
+					"left": 40,
+					"width": 180,
+					"height": 20,
 					"sizingX": "grow",
 					"stroke": "#26334D",
-					"text": "nbRequestsPerMin",
+					"text": "nbRequestPerMin",
 					"fontSize": 18,
-					"fontWeight": "bold"
+					"fontWeight": "bold",
+					"textAlign": "right"
 				},
-				"InputText11": {
+				"InputText3": {
 					"type": "input",
-					"top": 658,
-					"left": 190,
+					"top": 510,
+					"left": 240,
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
-					"dataSource": "Form:C1466.proposedQuotas.inBytesPerMin",
+					"dataSource": "Form:C1466.proposedQuotas.nbRequestPerMin",
 					"dataSourceTypeHint": "integer",
 					"fill": "#FBFCFE",
 					"stroke": "#26334D",
@@ -726,18 +705,74 @@
 					"textAlign": "center",
 					"verticalAlign": "middle"
 				},
+				"BtnContinue7": {
+					"type": "button",
+					"top": 510,
+					"left": 340,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue7.4dm"
+				},
+				"StepNumber5": {
+					"type": "text",
+					"top": 420,
+					"left": 50,
+					"width": 320,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Update web server settings"
+				},
 				"Line1": {
 					"type": "line",
-					"top": 379,
-					"left": 612,
+					"top": 390,
+					"left": 620,
 					"width": 0,
-					"height": 400,
+					"height": 380,
 					"stroke": "#289FE8"
 				},
-				"InputText5": {
+				"Input1": {
 					"type": "input",
-					"top": 400,
-					"left": 653,
+					"left": 100,
+					"top": 120,
+					"width": 831,
+					"height": 240,
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Infos[1].Description",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"styledText": true
+				},
+				"StepNumber9": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 250,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas"
+				},
+				"InputText4": {
+					"type": "input",
+					"top": 450,
+					"left": 650,
 					"width": 300,
 					"height": 300,
 					"sizingX": "grow",
@@ -754,6 +789,94 @@
 					"focusable": false,
 					"textAlign": "left",
 					"verticalAlign": "top"
+				},
+				"BtnContinueBackground8": {
+					"type": "rectangle",
+					"top": 590,
+					"left": 410,
+					"width": 130,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text8": {
+					"type": "text",
+					"text": "Test now",
+					"top": 599,
+					"left": 410,
+					"width": 130,
+					"height": 0,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue8": {
+					"type": "button",
+					"top": 590,
+					"left": 410,
+					"width": 130,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue8.4dm"
+				},
+				"BtnContinueBackground9": {
+					"type": "rectangle",
+					"top": 510,
+					"left": 480,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "#289FE8",
+					"fill": "#FFFFFF"
+				},
+				"Text9": {
+					"type": "text",
+					"text": "Reset",
+					"top": 519,
+					"left": 480,
+					"width": 120,
+					"height": 0,
+					"stroke": "#289FE8",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue9": {
+					"type": "button",
+					"top": 510,
+					"left": 480,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue9.4dm"
 				}
 			}
 		}
@@ -769,7 +892,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 1397,
+	"geometryStamp": 1484,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"

@@ -1,3 +1,3 @@
 
 
-Form:C1466.resetThisQuota("inBytesPerMin")
+Form:C1466.resetThisQuota("outBytesPerMin")
