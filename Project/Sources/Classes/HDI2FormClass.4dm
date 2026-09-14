@@ -50,7 +50,10 @@ Function formEventHandler($formEventCode : Integer)
 				DELAY PROCESS:C323(Current process:C322; 60)
 			End if 
 			
-			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10}
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
+			Form:C1466.proposedQuotas.nbSessions:=4
+			Form:C1466.proposedQuotas.nbGuestSessions:=2
+			
 			This:C1470.resetQuotas()
 			Form:C1466.quotas:=This:C1470.getQuotas()
 			
@@ -59,7 +62,10 @@ Function formEventHandler($formEventCode : Integer)
 			
 		: ($formEventCode=On Page Change:K2:54)
 			
-			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10}
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
+			Form:C1466.proposedQuotas.nbSessions:=4
+			Form:C1466.proposedQuotas.nbGuestSessions:=2
+			
 			
 		: (Form event code:C388=On Close Box:K2:21)
 			If (Is Windows:C1573 && Application info:C1599().SDIMode)
