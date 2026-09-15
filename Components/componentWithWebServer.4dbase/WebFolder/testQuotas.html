@@ -25,13 +25,15 @@
     line-height:1.4;
   }
   header{
-    padding:24px 32px 12px;
+    padding:10px 32px 4px;
 
   }
   header h1{
+    margin:10px 0px 10px 20px;
     font-size:20px;
     font-weight:400;
     color:var(--accent);
+    width:40%;
   }
   header p{
     margin:0;
@@ -39,11 +41,21 @@
     font-size:14px;
   }
   main{
-    max-width:1200px;
-    margin:0 auto;
-    padding:5px 32px 64px;
+    max-width:none;
+    margin:0;
+    padding:0 32px 64px;
+    display:grid;
+    grid-template-columns:minmax(420px, 2fr) minmax(560px, 3fr);
+    align-items:start;
+    gap:20px;
+  }
+  .main-content{
     display:grid;
     gap:20px;
+  }
+  .results-section{
+    grid-column:2;
+    grid-row:1;
   }
   .single-request-columns{
     display:grid;
@@ -56,6 +68,11 @@
     gap:20px;
   }
   @media (max-width:700px){
+    main{grid-template-columns:1fr;}
+    .results-section{
+      grid-column:1;
+      grid-row:auto;
+    }
     .single-request-columns,
     .burst-columns{grid-template-columns:1fr;}
   }
@@ -66,6 +83,7 @@
     padding:18px 20px;
   }
   section.send-data-highlight{
+    background:#f0faf4;
     border:2px solid var(--select);
   }
   section h2{
@@ -262,6 +280,7 @@
 </header>
 
 <main>
+  <div class="main-content">
   <section>
     <h2>Current Values</h2>
     <div id="stats" class="row">
@@ -274,30 +293,50 @@
   <div class="single-request-columns">
     <section class="send-data-section">
       <h2>Send Data (Single Request)</h2>
+         <br>
       <div class="row">
        <label class="blueLabel">1-</label>
         <label>Generate <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1"> bytes of data</label>
-        <button id="btnPostBody">Send this data in a POST</button>
-        </br>
+        <br>
          <p class="info"> Ratios:
-        - 1000 bytes correspond to 1637 bytes sent in total
+        - 1000 bytes corresponds to 1764 bytes sent in total
+             <br>
+            <br>
         </p>
+     
         <p> 
           <label><input type="checkbox" id="postNewSession">Create a new session for this request</label>
         </p>
+      </div>
+      <div class="row">
+        <div class="footer-actions">
+          <button id="btnPostBody">Send this data in a POST</button>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Request Data (Single Request)</h2>
-      </br>
+      <br>
       <div class="row">
         <label class="blueLabel">2-</label>
           <label>Request <input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1"> bytes of data</label>
-          <button id="btnGetData">Request Data</button>
+        <br>
+         <p class="info"> Ratios:
+        - 1000 bytes corresponds to 1764 bytes sent in total
+          <br>
+            <br>
+        </p>
+  <br>
+    <br>
            <p>
             <label><input type="checkbox" id="getNewSession">Create a new session for this request</label>
           </p>
+      </div>
+      <div class="row">
+        <div class="footer-actions">
+          <button id="btnGetData">Request Data</button>
+        </div>
       </div>
     </section>
   </div>
@@ -305,7 +344,7 @@
   <div class="burst-columns">
     <section class="send-data-section">
       <h2>Send Data (Request Burst)</h2>
-
+   <br>
       <div class="row">
         <label>Send data every <input style="text-align: center;" class="inputData" type="number" id="burstPostDelay" value="2" min="1"> seconds</label>
         <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstPostCount" value="10" min="1"> requests</label>
@@ -314,8 +353,12 @@
         <label>Size to send: <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> bytes</label>
       </div>
       <p>
+
+     <br>
       <div class="row">
         <label><input type="checkbox" id="burstPostNewSession">Create a new session for each request</label>
+          <br>
+          <br>
       </div>
       </p>
       <div class="row">
@@ -329,7 +372,7 @@
 
     <section>
       <h2>Request Data (Request Burst)</h2>
-     
+       <br>
       <div class="row">
         <label>Request data every <input style="text-align: center;" class="inputData" type="number" id="burstGetDelay" value="2" min="1"> seconds</label>
         <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstGetCount" value="10" min="1"> requests</label>
@@ -338,8 +381,11 @@
         <label>Size to request: <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> bytes</label>
       </div>
     <p>
+      <br>
       <div class="row">
         <label><input type="checkbox" id="burstGetNewSession">Create a new session for each request</label>
+          <br>
+          <br>
       </div>
     </p>
       <div class="row">
@@ -363,8 +409,9 @@
       <button id="btnOpenAndAuthenticateSessions">Open sessions and authenticate them</button>
     </div>
   </section>
+  </div>
 
-  <section>
+  <section class="results-section">
     <h2>Results</h2>
     <div id="stats">
       <label>Number of requests sent:</label><span id="statTotal" class="count">0</span>
