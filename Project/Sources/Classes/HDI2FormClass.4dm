@@ -16,8 +16,8 @@ Class constructor
 	This:C1470.quotaNames.push("inBytesPerHour")
 	This:C1470.quotaNames.push("outBytesPerHour")
 	
-	This:C1470.quotaNames.push("nbRequestPerMin")
-	This:C1470.quotaNames.push("nbRequestPerHour")
+	This:C1470.quotaNames.push("nbRequestsPerMin")
+	This:C1470.quotaNames.push("nbRequestsPerHour")
 	
 	This:C1470.quotaNames.push("inBytesPerMinPerSession")
 	This:C1470.quotaNames.push("outBytesPerMinPerSession")
@@ -25,8 +25,8 @@ Class constructor
 	This:C1470.quotaNames.push("inBytesPerHourPerSession")
 	This:C1470.quotaNames.push("outBytesPerHourPerSession")
 	
-	This:C1470.quotaNames.push("nbRequestPerMinPerSession")
-	This:C1470.quotaNames.push("nbRequestPerHourPerSession")
+	This:C1470.quotaNames.push("nbRequestsPerMinPerSession")
+	This:C1470.quotaNames.push("nbRequestsPerHourPerSession")
 	
 	This:C1470.quotaNames.push("nbSessions")
 	This:C1470.quotaNames.push("nbGuestSessions")
@@ -50,7 +50,7 @@ Function formEventHandler($formEventCode : Integer)
 				DELAY PROCESS:C323(Current process:C322; 60)
 			End if 
 			
-			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestsPerMin: 10; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
 			Form:C1466.proposedQuotas.nbSessions:=4
 			Form:C1466.proposedQuotas.nbGuestSessions:=2
 			
@@ -62,7 +62,7 @@ Function formEventHandler($formEventCode : Integer)
 			
 		: ($formEventCode=On Page Change:K2:54)
 			
-			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestPerMin: 10; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
+			Form:C1466.proposedQuotas:={inBytesPerMin: 3000; outBytesPerMin: 3000; nbRequestsPerMin: 10; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
 			Form:C1466.proposedQuotas.nbSessions:=4
 			Form:C1466.proposedQuotas.nbGuestSessions:=2
 			
@@ -77,9 +77,12 @@ Function formEventHandler($formEventCode : Integer)
 	End case 
 	
 	
-Function applyQuota($quotaName : Text; $quotaValue : Integer)
+Function applyQuota($quotaName : Text; $quotaValue : Integer; $resetQuotas : Boolean)
 	
-	This:C1470.resetQuotas()
+	If ($resetQuotas)
+		This:C1470.resetQuotas()
+	End if 
+	
 	WEB Server:C1674().quotas[$quotaName]:=$quotaValue
 	
 	Form:C1466.quotas:=This:C1470.getQuotas()
@@ -125,6 +128,15 @@ Function testNow()
 	OPEN URL:C673("http://127.0.0.1:8044/testQuotas.html")
 	
 	
+Function restartWebServer()
+	
+	WEB Server:C1674().stop()
+	
+	DELAY PROCESS:C323(Current process:C322(); 60)
+	
+	WEB Server:C1674().start()
+	
+	Form:C1466.quotas:=This:C1470.getQuotas()
 	
 	
 Function sendDataToServer()

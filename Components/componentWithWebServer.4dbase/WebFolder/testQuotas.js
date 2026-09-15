@@ -212,7 +212,7 @@ document.getElementById('btnOpenSessions').addEventListener('click', async () =>
 document.getElementById('btnOpenAndAuthenticateSessions').addEventListener('click', async () => {
   const count = parseInt(document.getElementById('authenticatedSessionCount').value, 10) || 0;
   for (let i = 1; i <= count; i++) {
-    await sendRequest({ method: 'GET', newSession: true, authenticate: true });
+    await sendRequest({ method: 'POST', newSession: true, authenticate: true });
   }
   await loadSessionCounts();
 });

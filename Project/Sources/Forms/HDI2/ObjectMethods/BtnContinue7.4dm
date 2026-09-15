@@ -1,3 +1,3 @@
 
 
-Form:C1466.applyQuota("nbRequestPerMin"; Form:C1466.proposedQuotas.nbRequestPerMin)
+Form:C1466.applyQuota("nbRequestsPerMin"; Form:C1466.proposedQuotas.nbRequestsPerMin)

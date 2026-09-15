@@ -17,6 +17,13 @@ Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 			$result.setBody(This:C1470.buildContent(Num:C11($incoming.urlQuery.size)))
 			$result.setHeader("Content-Type"; "text/plain")
 			
+		: (($incoming.verb="POST") && ($incoming.urlQuery.authenticate#Null:C1517))
+			
+			If (Bool:C1537($incoming.urlQuery.authenticate="true"))
+				Session:C1714.setPrivileges("")
+			End if 
+			
+			
 	End case 
 	
 	

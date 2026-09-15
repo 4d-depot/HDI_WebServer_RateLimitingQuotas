@@ -1,3 +1,3 @@
 
 
-Form:C1466.resetThisQuota("nbRequestPerMinPerSession")
+Form:C1466.resetThisQuota("nbRequestsPerMinPerSession")

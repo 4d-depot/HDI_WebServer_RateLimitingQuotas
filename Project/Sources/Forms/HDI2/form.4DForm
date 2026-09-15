@@ -691,7 +691,7 @@
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
-					"dataSource": "Form:C1466.proposedQuotas.nbRequestPerMin",
+					"dataSource": "Form:C1466.proposedQuotas.nbRequestsPerMin",
 					"dataSourceTypeHint": "integer",
 					"fill": "#FBFCFE",
 					"stroke": "#26334D",
@@ -1691,8 +1691,8 @@
 				},
 				"BtnContinueBackground19": {
 					"type": "rectangle",
-					"top": 670,
-					"left": 190,
+					"top": 680,
+					"left": 80,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -1704,8 +1704,8 @@
 				"Text19": {
 					"type": "text",
 					"text": "Apply",
-					"top": 679,
-					"left": 190,
+					"top": 689,
+					"left": 80,
 					"width": 120,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -1747,7 +1747,7 @@
 				"LabelInputText6": {
 					"type": "text",
 					"top": 520,
-					"left": 40,
+					"left": 50,
 					"width": 150,
 					"height": 20,
 					"sizingX": "grow",
@@ -1760,7 +1760,7 @@
 				"InputText13": {
 					"type": "input",
 					"top": 510,
-					"left": 230,
+					"left": 220,
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
@@ -1781,8 +1781,8 @@
 				},
 				"BtnContinue19": {
 					"type": "button",
-					"top": 670,
-					"left": 190,
+					"top": 680,
+					"left": 80,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -1866,8 +1866,8 @@
 				},
 				"BtnContinueBackground20": {
 					"type": "rectangle",
-					"top": 650,
-					"left": 470,
+					"top": 680,
+					"left": 360,
 					"width": 130,
 					"height": 40,
 					"sizingX": "move",
@@ -1879,8 +1879,8 @@
 				"Text20": {
 					"type": "text",
 					"text": "Test now",
-					"top": 659,
-					"left": 470,
+					"top": 689,
+					"left": 360,
 					"width": 130,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -1890,8 +1890,8 @@
 				},
 				"BtnContinue20": {
 					"type": "button",
-					"top": 650,
-					"left": 470,
+					"top": 680,
+					"left": 360,
 					"width": 130,
 					"height": 40,
 					"sizingX": "move",
@@ -1910,8 +1910,8 @@
 				},
 				"BtnContinueBackground21": {
 					"type": "rectangle",
-					"top": 670,
-					"left": 330,
+					"top": 680,
+					"left": 220,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -1923,8 +1923,8 @@
 				"Text21": {
 					"type": "text",
 					"text": "Reset",
-					"top": 679,
-					"left": 330,
+					"top": 689,
+					"left": 220,
 					"width": 120,
 					"height": 0,
 					"stroke": "#289FE8",
@@ -1934,8 +1934,8 @@
 				},
 				"BtnContinue21": {
 					"type": "button",
-					"top": 670,
-					"left": 330,
+					"top": 680,
+					"left": 220,
 					"width": 120,
 					"height": 40,
 					"sizingX": "move",
@@ -1955,7 +1955,7 @@
 				"LabelInputText7": {
 					"type": "text",
 					"top": 590,
-					"left": 40,
+					"left": 50,
 					"width": 150,
 					"height": 20,
 					"sizingX": "grow",
@@ -1968,7 +1968,7 @@
 				"InputText15": {
 					"type": "input",
 					"top": 580,
-					"left": 230,
+					"left": 220,
 					"width": 70,
 					"height": 40,
 					"sizingX": "grow",
@@ -1986,6 +1986,50 @@
 					"textAlign": "center",
 					"verticalAlign": "middle",
 					"method": "ObjectMethods/InputText15.4dm"
+				},
+				"BtnContinueBackground22": {
+					"type": "rectangle",
+					"top": 730,
+					"left": 220,
+					"width": 250,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text22": {
+					"type": "text",
+					"text": "Restart web server",
+					"top": 739,
+					"left": 220,
+					"width": 250,
+					"height": 0,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue22": {
+					"type": "button",
+					"top": 730,
+					"left": 219,
+					"width": 250,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue22.4dm"
 				}
 			}
 		}
@@ -2001,7 +2045,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 1683,
+	"geometryStamp": 1840,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
