@@ -33,6 +33,10 @@ if (new URLSearchParams(window.location.search).get('action') === 'requestData')
   });
 }
 
+if (new URLSearchParams(window.location.search).get('action') === 'workOnSessions') {
+  document.querySelector('.sessions-section').classList.add('sessions-highlight');
+}
+
 if (new URLSearchParams(window.location.search).get('option') === 'newSession') {
   document.querySelectorAll('section.send-data-highlight input[type="checkbox"], section.request-data-highlight input[type="checkbox"]')
     .forEach((checkbox) => {
