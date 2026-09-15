@@ -21,6 +21,12 @@ const nbSessionsEl = document.getElementById('nbSessions');
 const nbGuestSessionsEl = document.getElementById('nbGuestSessions');
 const btnRefreshSessions = document.getElementById('btnRefreshSessions');
 
+if (new URLSearchParams(window.location.search).get('action') === 'sendData') {
+  document.querySelectorAll('.send-data-section').forEach((section) => {
+    section.classList.add('send-data-highlight');
+  });
+}
+
 // --- Bandeau de quotas ---
 const QUOTA_KEYS = [
   'inBytesPerMin',

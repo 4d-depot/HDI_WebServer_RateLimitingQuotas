@@ -14,6 +14,7 @@
     --accent-dark:#204d37;
     --warn:#b3492f;
     --ok:#2f6f4f;
+    --select:#44a273;
   }
   *{box-sizing:border-box;}
   body{
@@ -63,6 +64,9 @@
     border:1px solid var(--border);
     border-radius:8px;
     padding:18px 20px;
+  }
+  section.send-data-highlight{
+    border:2px solid var(--select);
   }
   section h2{
     margin:0 0 4px;
@@ -268,7 +272,7 @@
   </section>
 
   <div class="single-request-columns">
-    <section>
+    <section class="send-data-section">
       <h2>Send Data (Single Request)</h2>
       <div class="row">
        <label class="blueLabel">1-</label>
@@ -299,7 +303,7 @@
   </div>
 
   <div class="burst-columns">
-    <section>
+    <section class="send-data-section">
       <h2>Send Data (Request Burst)</h2>
 
       <div class="row">
@@ -309,9 +313,11 @@
       <div class="row">
         <label>Size to send: <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> bytes</label>
       </div>
+      <p>
       <div class="row">
         <label><input type="checkbox" id="burstPostNewSession">Create a new session for each request</label>
       </div>
+      </p>
       <div class="row">
         <div class="footer-actions">
           <button id="btnBurstPostStart">Start POST Burst</button>
@@ -331,9 +337,11 @@
       <div class="row">
         <label>Size to request: <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> bytes</label>
       </div>
+    <p>
       <div class="row">
         <label><input type="checkbox" id="burstGetNewSession">Create a new session for each request</label>
       </div>
+    </p>
       <div class="row">
         <div class="footer-actions">
           <button id="btnBurstGetStart">Start GET Burst</button>
