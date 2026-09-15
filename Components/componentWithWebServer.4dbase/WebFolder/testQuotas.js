@@ -27,6 +27,20 @@ if (new URLSearchParams(window.location.search).get('action') === 'sendData') {
   });
 }
 
+if (new URLSearchParams(window.location.search).get('action') === 'requestData') {
+  document.querySelectorAll('.request-data-section').forEach((section) => {
+    section.classList.add('request-data-highlight');
+  });
+}
+
+if (new URLSearchParams(window.location.search).get('option') === 'newSession') {
+  document.querySelectorAll('section.send-data-highlight input[type="checkbox"], section.request-data-highlight input[type="checkbox"]')
+    .forEach((checkbox) => {
+      checkbox.classList.add('new-session-highlight');
+      checkbox.closest('label').classList.add('new-session-highlight');
+    });
+}
+
 // --- Bandeau de quotas ---
 const QUOTA_KEYS = [
   'inBytesPerMin',

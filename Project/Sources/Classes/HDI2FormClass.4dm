@@ -115,20 +115,21 @@ Function resetThisQuota($quotaName : Text)
 	Form:C1466.quotas:=This:C1470.getQuotas()
 	
 	
-Function testNow($action : Text)
+Function testNow($action : Text; $option : Text)
 	
-	//var $folder : 4D.Folder
-	
-	//$folder:=Folder("/RESOURCES/")
-	
-	//OPEN URL($folder.platformPath+"testQuotas.html")
+	var $url:="http://127.0.0.1:8044/testQuotas.html"
 	
 	startComponentWebServer
 	
 	//http://127.0.0.1:8044/testQuotas.html?action=sendData
 	
-	OPEN URL:C673("http://127.0.0.1:8044/testQuotas.html?action="+$action)
+	$url+="?action="+$action
 	
+	If ($option#Null:C1517)
+		$url+="&option="+$option
+	End if 
+	
+	OPEN URL:C673($url)
 	
 Function restartWebServer()
 	
