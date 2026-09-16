@@ -140,7 +140,7 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
     }
 
     const retryAfter = response.headers.get('Retry-After');
-    let details = `${timestamp()}  ${method.padEnd(4)} ${url}  →  ${response.status}  (${duration}ms, sent ${sentBytes} bytes, received ${receivedBytes} bytes)`;
+    let details = `${timestamp()}  Done  →  status: ${response.status} - ${duration}ms - Sent to the server: ${sentBytes} bytes, Received from the server: ${receivedBytes} bytes`;
     if (retryAfter !== null) details += `  Retry-After: "${retryAfter}"`;
     if (newSession) details += '  [new session]';
 

@@ -80,7 +80,7 @@
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:8px;
-    padding:18px 20px;
+    padding:18px 15px;
   }
   section.send-data-highlight{
     background:#f0faf4;
@@ -100,11 +100,28 @@
     font-weight:600;
   }
  section p.info{
-    margin:0 0 4px;
+    margin:0 0 0px;
     font-size:14px;
     font-weight:400;
     color:var(--muted);
     margin: 30px 0 0 0px;
+  }
+
+  .info-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:16px;
+    height:16px;
+    margin-right:5px;
+    border:1px solid #44a273;
+    border-radius:50%;
+    color:#44a273;
+    font-size:11px;
+    font-weight:700;
+    line-height:1;
+    vertical-align:middle;
+    cursor:help;
   }
 
  section p.hint{
@@ -115,6 +132,7 @@
     display:flex;
     justify-content:center;
     width:100%;
+    margin: 10px;
   }
   .row{
     display:flex;
@@ -122,12 +140,6 @@
     align-items:center;
     gap:10px;
     margin-bottom:10px;
-  }
-  
-  .blueLabel{
-    font-size:20px;
-    font-weight:400;
-    color:var(--accent);
   }
   
   .row:last-child{margin-bottom:0;}
@@ -227,7 +239,7 @@
     padding:10px 12px;
     font-family:ui-monospace,Menlo,Consolas,monospace;
     font-size:12px;
-    height:260px;
+    height:500px;
     overflow-y:auto;
     white-space:pre-wrap;
   }
@@ -306,40 +318,27 @@
       <h2>Send Data (Single Request)</h2>
          <br>
       <div class="row">
-       <label class="blueLabel">1-</label>
-        <label>Generate <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1"> bytes of data</label>
+          <label>Generate <input style="text-align:center;" class="inputData" type="number" id="bodySize" value="1000" min="1"> bytes of data</label>
         <br>
-         <p class="info"> Ratios:
-        - 1000 bytes corresponds to 1764 bytes sent in total
-             <br>
-            <br>
-        </p>
-     
+              
         <p> 
           <label><input type="checkbox" id="postNewSession">Create a new session for this request</label>
         </p>
       </div>
       <div class="row">
         <div class="footer-actions">
-          <button id="btnPostBody">Send this data in a POST</button>
+          <button id="btnPostBody">Send this data to the web server</button>
         </div>
       </div>
+      <p class="info"><span class="info-icon" title="The total includes the HTTP request overhead" aria-label="Information">i</span>1000 bytes corresponds to 1809 bytes sent in total
+      </p>
     </section>
 
     <section class="request-data-section">
       <h2>Request Data (Single Request)</h2>
       <br>
       <div class="row">
-        <label class="blueLabel">2-</label>
           <label>Request <input style="text-align: center;"  class="inputData" type="number" id="respSize" value="1000" min="1"> bytes of data</label>
-        <br>
-         <p class="info"> Ratios:
-        - 1000 bytes corresponds to 1764 bytes sent in total
-          <br>
-            <br>
-        </p>
-  <br>
-    <br>
            <p>
             <label><input type="checkbox" id="getNewSession">Create a new session for this request</label>
           </p>
@@ -363,22 +362,21 @@
       <div class="row">
         <label>Size to send: <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> bytes</label>
       </div>
-      <p>
 
      <br>
-      <div class="row">
-        <label><input type="checkbox" id="burstPostNewSession">Create a new session for each request</label>
-          <br>
-          <br>
-      </div>
+      <p>
+        <label><input type="checkbox" id="burstPostNewSession">Create a new session for this request</label>
       </p>
       <div class="row">
         <div class="footer-actions">
-          <button id="btnBurstPostStart">Start POST Burst</button>
-          <button id="btnBurstPostStop" class="secondary" disabled>Stop POST Burst</button>
+          <button id="btnBurstPostStart">Start burst</button>
+          <button id="btnBurstPostStop" class="secondary" disabled>Stop burst</button>
         </div>
         <p class="hint" id="burstPostProgress"></p>
-      </div>
+        </div>
+     <p class="info"><span class="info-icon" title="The total includes the HTTP request overhead" aria-label="Information">i</span>1000 bytes corresponds to 1809 bytes sent in total
+      </p>
+   
     </section>
 
     <section class="request-data-section">
@@ -391,14 +389,12 @@
       <div class="row">
         <label>Size to request: <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> bytes</label>
       </div>
-    <p>
+
       <br>
-      <div class="row">
+    <p>
         <label><input type="checkbox" id="burstGetNewSession">Create a new session for each request</label>
-          <br>
-          <br>
-      </div>
-    </p>
+             </p>
+
       <div class="row">
         <div class="footer-actions">
           <button id="btnBurstGetStart">Start GET Burst</button>

@@ -27,12 +27,12 @@ Case of
 		
 		$options:=New object:C1471
 		
-		$options.title:="Setup the title in the"+$cr+"00_Start Method"
+		$options.title:="get started with the 4D web server quotas system"
 		
 		$options.blog:="blog.4d.com"
-		$options.info:="Setup the info in the 00_Start Method"  //ex : "4D View Pro feature"
+		$options.info:="4D web server"  //ex : "4D View Pro feature"
 		
-		$options.minimumVersion:="2000"  // 1660 means 16R6   1601 means 16.1 (do not use !)
+		$options.minimumVersion:="2140"  // 1660 means 16R6   1601 means 16.1 (do not use !)
 		
 		
 		// $options.license:=4D View license  // IF ANY NEEDED

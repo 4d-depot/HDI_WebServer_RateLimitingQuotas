@@ -26,18 +26,7 @@ Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 			
 	End case 
 	
-	
-	//If ($incoming.getText()#"")
-	//$result.setBody("Well received your data! \n\nBody content-type: "+String($incoming.headers["content-type"])+"\n\n"+"Body content-length: "+String($incoming.headers["content-length"])\
-		+"\n\n"+"Body: "+"\n\n"+$incoming.getText())
-	
-	//Else 
-	//$result.setBody("You sent a request without body")
-	//End if 
-	
 	return $result
-	
-	
 	
 	
 	
