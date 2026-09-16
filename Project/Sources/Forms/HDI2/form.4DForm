@@ -467,17 +467,6 @@
 					"stroke": "transparent",
 					"fill": "#F6FAFD"
 				},
-				"StepNumber24": {
-					"type": "text",
-					"top": 82,
-					"left": 80,
-					"width": 750,
-					"height": 28,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "bold",
-					"text": "Outbound traffic"
-				},
 				"Input8": {
 					"type": "input",
 					"left": 80,
@@ -717,6 +706,17 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue9.4dm"
+				},
+				"StepNumber9": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Inbound traffic"
 				}
 			}
 		},
@@ -756,17 +756,6 @@
 					"borderRadius": 8,
 					"stroke": "transparent",
 					"fill": "#F6FAFD"
-				},
-				"StepNumber10": {
-					"type": "text",
-					"top": 82,
-					"left": 80,
-					"width": 750,
-					"height": 28,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "bold",
-					"text": "Rate limiting for inbound traffic"
 				},
 				"ActiveStep4": {
 					"type": "rectangle",
@@ -983,6 +972,17 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue12.4dm"
+				},
+				"StepNumber10": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Inbound traffic"
 				}
 			}
 		},
@@ -1022,17 +1022,6 @@
 					"borderRadius": 8,
 					"stroke": "transparent",
 					"fill": "#F6FAFD"
-				},
-				"StepNumber16": {
-					"type": "text",
-					"top": 82,
-					"left": 80,
-					"width": 750,
-					"height": 28,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "bold",
-					"text": "Rate limiting for inbound traffic"
 				},
 				"ActiveStep6": {
 					"type": "rectangle",
@@ -1250,6 +1239,17 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue18.4dm"
+				},
+				"StepNumber16": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Inbound traffic"
 				}
 			}
 		},
@@ -1556,17 +1556,6 @@
 					"stroke": "transparent",
 					"fill": "#F6FAFD"
 				},
-				"StepNumber13": {
-					"type": "text",
-					"top": 82,
-					"left": 80,
-					"width": 750,
-					"height": 28,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "bold",
-					"text": "Rate limiting for inbound traffic"
-				},
 				"ActiveStep5": {
 					"type": "rectangle",
 					"top": 70,
@@ -1782,6 +1771,17 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue15.4dm"
+				},
+				"StepNumber13": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Outbound traffic"
 				}
 			}
 		},
@@ -1839,7 +1839,7 @@
 					"stroke": "#289FE8",
 					"fontSize": 20,
 					"fontWeight": "bold",
-					"text": "Rate limiting for inbound traffic"
+					"text": "Sessions"
 				},
 				"ActiveStep7": {
 					"type": "rectangle",
@@ -2164,7 +2164,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 2399,
+	"geometryStamp": 2407,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
