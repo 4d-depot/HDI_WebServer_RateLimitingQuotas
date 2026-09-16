@@ -45,7 +45,7 @@
     margin:0;
     padding:0 32px 64px;
     display:grid;
-    grid-template-columns:minmax(420px, 2fr) minmax(560px, 3fr);
+    grid-template-columns:minmax(620px, 3fr) minmax(560px, 2fr);
     align-items:start;
     gap:20px;
   }
@@ -100,11 +100,10 @@
     font-weight:600;
   }
  section p.info{
-    margin:0 0 0px;
     font-size:14px;
     font-weight:400;
     color:var(--muted);
-    margin: 30px 0 0 0px;
+    margin: 10px 0 0 0px;
   }
 
   .info-icon{
@@ -124,9 +123,26 @@
     cursor:help;
   }
 
+  .sessions-section{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    overflow-x:auto;
+  }
+  .sessions-section h2{
+    flex:0 0 auto;
+    margin:0;
+  }
+  .sessions-section .row{
+    flex:0 0 auto;
+    flex-wrap:nowrap;
+    margin:0;
+    gap:8px;
+    white-space:nowrap;
+  }
+
  section p.hint{
    font-weight:600;
-    margin:0 0 14px;
     color:var(--ok);
     font-size:16px;
     display:flex;
@@ -231,6 +247,28 @@
     font-size:20px;
     font-weight:600;
   }
+  .current-values{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .current-values h2{
+    flex:0 0 auto;
+    margin:0;
+  }
+  .current-values #stats{
+    flex:1 1 auto;
+    flex-wrap:nowrap;
+    min-width:0;
+    margin-bottom:0;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .current-values #stats label,
+  .current-values #stats span,
+  .current-values #stats button{
+    flex:0 0 auto;
+  }
 
   #log{
     background:#1e1e1c;
@@ -304,7 +342,7 @@
 
 <main>
   <div class="main-content">
-  <section>
+  <section class="current-values">
     <h2>Current Values</h2>
     <div id="stats" class="row">
       <label>Number of sessions:</label><span id="nbSessions" class="count">0</span>
@@ -330,7 +368,7 @@
           <button id="btnPostBody">Send this data to the web server</button>
         </div>
       </div>
-      <p class="info"><span class="info-icon" title="The total includes the HTTP request overhead" aria-label="Information">i</span>1000 bytes corresponds to 1809 bytes sent in total
+      <p class="info"> <span class="info-icon" title="The total includes the HTTP request overhead" aria-label="Information">i</span> 1000 bytes corresponds to 1809 bytes sent in total
       </p>
     </section>
 
@@ -409,11 +447,11 @@
     <h2>Concurrent Sessions</h2>
     <div class="row">
       <label>Number of Guest sessions to open <input style="text-align: center;" class="inputData"  type="number" id="sessionCount" value="3" min="1"></label>
-      <button id="btnOpenSessions">Open Guest Sessions</button>
+      <button id="btnOpenSessions">Open</button>
     </div>
     <div class="row">
       <label>Number of authenticated sessions to open <input style="text-align: center;" class="inputData"  type="number" id="authenticatedSessionCount" value="1" min="1"></label>
-      <button id="btnOpenAndAuthenticateSessions">Open sessions and authenticate them</button>
+      <button id="btnOpenAndAuthenticateSessions">Open</button>
     </div>
   </section>
   </div>
