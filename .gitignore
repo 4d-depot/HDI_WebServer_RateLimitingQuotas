@@ -17,6 +17,7 @@
 # Ignore derived data
 #--------------------------------
 Project/DerivedData/
+Components/componentWithWebServer.4dbase/Project/DerivedData/
 Libraries/
 
 #--------------------------------
