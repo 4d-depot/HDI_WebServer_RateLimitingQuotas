@@ -66,6 +66,22 @@ Function formEventHandler($formEventCode : Integer)
 			Form:C1466.proposedQuotas.nbSessions:=4
 			Form:C1466.proposedQuotas.nbGuestSessions:=2
 			
+			OBJECT SET VISIBLE:C603(*; "Restarting"; False:C215)
+			
+			
+		: ($formEventCode=On Timer:K2:25)
+			
+			$signal:=New signal:C1641
+			CALL WORKER:C1389("startWebServer"; "Worker"; $signal)
+			
+			$signaled:=$signal.wait()
+			
+			OBJECT SET TITLE:C194(*; "Restarting"; "Web server restarted")
+			OBJECT SET RGB COLORS:C628(*; "Restarting"; 0x0016A34A)
+			
+			Form:C1466.quotas:=This:C1470.getQuotas()
+			
+			SET TIMER:C645(0)
 			
 		: (Form event code:C388=On Close Box:K2:21)
 			If (Is Windows:C1573 && Application info:C1599().SDIMode)
@@ -75,6 +91,15 @@ Function formEventHandler($formEventCode : Integer)
 			End if 
 			
 	End case 
+	
+	
+Function restartWebServer()
+	
+	OBJECT SET TITLE:C194(*; "Restarting"; "Restarting ... please wait")
+	OBJECT SET RGB COLORS:C628(*; "Restarting"; 0x00E11D48)
+	OBJECT SET VISIBLE:C603(*; "Restarting"; True:C214)
+	
+	SET TIMER:C645(-1)
 	
 	
 Function applyQuota($quotaName : Text; $quotaValue : Integer; $resetQuotas : Boolean)
@@ -131,56 +156,6 @@ Function testNow($action : Text; $option : Text)
 	
 	OPEN URL:C673($url)
 	
-Function restartWebServer()
-	
-	WEB Server:C1674().stop()
-	
-	DELAY PROCESS:C323(Current process:C322(); 60)
-	
-	WEB Server:C1674().start()
-	
-	Form:C1466.quotas:=This:C1470.getQuotas()
 	
 	
-Function sendDataToServer()
-	
-	Form:C1466.urlSendData:="http://localhost/demo"
-	Form:C1466.verb:=HTTP POST method:K71:2
-	
-	
-	Form:C1466.request:=_sendRequest(Form:C1466.urlSendData; Form:C1466.verb; Form:C1466.file_60.getText())
-	
-	
-	Case of 
-		: (Form:C1466.request.response.status=200)
-			Form:C1466.response:=Form:C1466.request.response.body
-			Form:C1466.retryAfter:=0
-			
-		: (Form:C1466.request.response.status=429)
-			Form:C1466.response:={status: Form:C1466.request.response.status; statusText: Form:C1466.request.response.statusText; retryAfter: Form:C1466.request.response.headers["retry-after"]}
-			Form:C1466.retryAfter:=Form:C1466.request.response.headers["retry-after"]
-	End case 
-	
-	
-	
-Function requestDataToServer()
-	
-	Form:C1466.attempts+=1
-	
-	Form:C1466.verb:=HTTP GET method:K71:1
-	
-	Form:C1466.url:=Form:C1466.data60 ? Form:C1466.urlGetData60 : Form:C1466.urlGetData120
-	
-	Form:C1466.request:=_sendRequest(Form:C1466.url; Form:C1466.verb)
-	
-	Case of 
-		: (Form:C1466.request.response.status=200)
-			Form:C1466.response:=Form:C1466.request.response.body
-			Form:C1466.retryAfter:=0
-			
-		: (Form:C1466.request.response.status=429)
-			Form:C1466.response:={status: Form:C1466.request.response.status; statusText: Form:C1466.request.response.statusText; retryAfter: Form:C1466.request.response.headers["retry-after"]}
-			Form:C1466.retryAfter:=Form:C1466.request.response.headers["retry-after"]
-			Form:C1466.attempts:=0
-	End case 
 	

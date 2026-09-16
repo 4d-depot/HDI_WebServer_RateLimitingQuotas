@@ -14,6 +14,7 @@
 	"events": [
 		"onLoad",
 		"onCloseBox",
+		"onTimer",
 		"onPageChange"
 	],
 	"method": "method.4dm",
@@ -2095,7 +2096,7 @@
 				"BtnContinueBackground22": {
 					"type": "rectangle",
 					"top": 730,
-					"left": 220,
+					"left": 140,
 					"width": 250,
 					"height": 40,
 					"sizingX": "move",
@@ -2108,7 +2109,7 @@
 					"type": "text",
 					"text": "Restart web server",
 					"top": 739,
-					"left": 220,
+					"left": 140,
 					"width": 250,
 					"height": 0,
 					"stroke": "#FFFFFF",
@@ -2119,7 +2120,7 @@
 				"BtnContinue22": {
 					"type": "button",
 					"top": 730,
-					"left": 219,
+					"left": 139,
 					"width": 250,
 					"height": 40,
 					"sizingX": "move",
@@ -2135,9 +2136,22 @@
 					],
 					"display": false,
 					"method": "ObjectMethods/BtnContinue22.4dm"
+				},
+				"Restarting": {
+					"type": "text",
+					"top": 740,
+					"left": 400,
+					"width": 240,
+					"height": 20,
+					"stroke": "#E11D48",
+					"fontSize": 18,
+					"fontWeight": "normal",
+					"text": "Restarting ... please wait",
+					"visibility": "hidden"
 				}
 			}
-		}
+		},
+		null
 	],
 	"$4d": {
 		"version": "1",
@@ -2150,7 +2164,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 2318,
+	"geometryStamp": 2399,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
