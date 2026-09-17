@@ -53,6 +53,7 @@ Function formEventHandler($formEventCode : Integer)
 			Form:C1466.proposedQuotas:={inBytesPerMin: 4000; outBytesPerMin: 3000; nbRequestsPerMin: 5; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
 			Form:C1466.proposedQuotas.nbSessions:=4
 			Form:C1466.proposedQuotas.nbGuestSessions:=2
+			Form:C1466.proposedQuotas.nbEntitySetsPerSession:=2
 			
 			This:C1470.resetQuotas()
 			Form:C1466.quotas:=This:C1470.getQuotas()
@@ -65,6 +66,7 @@ Function formEventHandler($formEventCode : Integer)
 			Form:C1466.proposedQuotas:={inBytesPerMin: 4000; outBytesPerMin: 3000; nbRequestsPerMin: 5; inBytesPerMinPerSession: 2000; outBytesPerMinPerSession: 3000; nbRequestsPerMinPerSession: 5}
 			Form:C1466.proposedQuotas.nbSessions:=4
 			Form:C1466.proposedQuotas.nbGuestSessions:=2
+			Form:C1466.proposedQuotas.nbEntitySetsPerSession:=2
 			
 			OBJECT SET VISIBLE:C603(*; "Restarting"; False:C215)
 			

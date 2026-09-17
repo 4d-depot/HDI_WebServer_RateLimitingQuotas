@@ -20,6 +20,10 @@ const btnBurstGetStop = document.getElementById('btnBurstGetStop');
 const nbSessionsEl = document.getElementById('nbSessions');
 const nbGuestSessionsEl = document.getElementById('nbGuestSessions');
 const btnRefreshSessions = document.getElementById('btnRefreshSessions');
+const nbEntitySetsEl = document.getElementById('nbEntitySets');
+const entitySetCountEl = document.getElementById('entitySetCount');
+const btnCreateEntitySets = document.getElementById('btnCreateEntitySets');
+let entitySetSessionCookie = null;
 
 if (new URLSearchParams(window.location.search).get('action') === 'sendData') {
   document.querySelectorAll('.send-data-section').forEach((section) => {
@@ -92,6 +96,7 @@ async function loadSessionCounts() {
     const quotas = await response.json();
     nbSessionsEl.textContent = quotas.nbSessions ?? 0;
     nbGuestSessionsEl.textContent = quotas.nbGuestSessions ?? 0;
+    nbEntitySetsEl.textContent = quotas.nbEntitySets ?? 0;
   } catch (err) {
     logLine(`Unable to load the number of sessions: ${err.message}`, 'lerr');
   }
@@ -240,6 +245,36 @@ document.getElementById('btnOpenAndAuthenticateSessions').addEventListener('clic
   }
   await loadSessionCounts();
 });
+
+// Crée des entity sets sans envoyer le cookie de la session courante.
+async function createEntitySets() {
+  const count = parseInt(entitySetCountEl.value, 10) || 0;
+
+  for (let i = 0; i < count; i++) {
+    try {
+      const response = await fetch('http://127.0.0.1/rest/SomeData?$method=entityset', {
+        method: 'GET',
+        credentials: 'omit',
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const setCookie = response.headers.get('Set-Cookie');
+      if (setCookie) {
+        entitySetSessionCookie = setCookie
+          .split(';')[0]
+          .replace(/^4DSID_HDI_WebServer_RateLimitingQuotas=/, '');
+      } else {
+        logLine('The session cookie is not accessible from the browser.', 'lerr');
+      }
+    } catch (err) {
+      logLine(`Unable to create entity set: ${err.message}`, 'lerr');
+    }
+  }
+
+  await loadSessionCounts();
+}
+
+btnCreateEntitySets.addEventListener('click', createEntitySets);
 
 
 

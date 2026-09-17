@@ -197,7 +197,8 @@
     margin-left:-6px;
   }
   
-  input[type=number]{
+  input[type=number],
+  input[type=text]{
     width:90px;
     padding:5px 7px;
     border:1px solid var(--border);
@@ -251,6 +252,20 @@
     display:flex;
     align-items:center;
     gap:16px;
+  }
+  .entity-sets-section .row{
+    flex-wrap:nowrap;
+    white-space:nowrap;
+  }
+  .entity-sets-section{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    overflow-x:auto;
+  }
+  .entity-sets-section h2{
+    flex:0 0 auto;
+    margin:0;
   }
   .current-values h2{
     flex:0 0 auto;
@@ -347,6 +362,7 @@
     <div id="stats" class="row">
       <label>Number of sessions:</label><span id="nbSessions" class="count">0</span>
       <label>Number of Guest sessions:</label><span id="nbGuestSessions" class="count">0</span>
+      <label>Number of entity sets:</label><span id="nbEntitySets" class="count">0</span>
       <button id="btnRefreshSessions" type="button">Refresh</button>
     </div>
   </section>
@@ -452,6 +468,14 @@
     <div class="row">
       <label>Number of authenticated sessions to open <input style="text-align: center;" class="inputData"  type="number" id="authenticatedSessionCount" value="1" min="1"></label>
       <button id="btnOpenAndAuthenticateSessions">Open</button>
+    </div>
+  </section>
+
+  <section class="entity-sets-section">
+    <h2>Entity sets</h2>
+    <div class="row">
+      <label>Create entity sets on a new session <input style="text-align: center;" class="inputData" type="text" id="entitySetCount" value="1"></label>
+      <button id="btnCreateEntitySets">Create</button>
     </div>
   </section>
   </div>

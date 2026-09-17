@@ -2151,7 +2151,272 @@
 				}
 			}
 		},
-		null
+		{
+			"objects": {
+				"BtnContinueBackground23": {
+					"type": "rectangle",
+					"top": 590,
+					"left": 190,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text23": {
+					"type": "text",
+					"text": "Apply",
+					"top": 599,
+					"left": 190,
+					"width": 120,
+					"height": 0,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"SidePanel1": {
+					"type": "rectangle",
+					"top": 70,
+					"left": 60,
+					"width": 900,
+					"height": 300,
+					"sizingY": "grow",
+					"borderRadius": 8,
+					"stroke": "transparent",
+					"fill": "#F6FAFD"
+				},
+				"ActiveStep3": {
+					"type": "rectangle",
+					"top": 70,
+					"left": 60,
+					"width": 5,
+					"height": 300,
+					"stroke": "transparent",
+					"fill": "#289FE8"
+				},
+				"LabelInputText8": {
+					"type": "text",
+					"top": 520,
+					"left": 40,
+					"width": 240,
+					"height": 20,
+					"sizingX": "grow",
+					"stroke": "#26334D",
+					"text": "nbEntitySetsPerSession",
+					"fontSize": 18,
+					"fontWeight": "bold",
+					"textAlign": "right"
+				},
+				"InputText16": {
+					"type": "input",
+					"top": 510,
+					"left": 310,
+					"width": 70,
+					"height": 40,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.proposedQuotas.nbEntitySetsPerSession",
+					"dataSourceTypeHint": "integer",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": true,
+					"focusable": false,
+					"textAlign": "center",
+					"verticalAlign": "middle"
+				},
+				"BtnContinue23": {
+					"type": "button",
+					"top": 590,
+					"left": 190,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue23.4dm"
+				},
+				"StepNumber22": {
+					"type": "text",
+					"top": 420,
+					"left": 50,
+					"width": 320,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Update web server settings"
+				},
+				"Line8": {
+					"type": "line",
+					"top": 390,
+					"left": 620,
+					"width": 0,
+					"height": 380,
+					"stroke": "#289FE8"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 100,
+					"top": 120,
+					"width": 831,
+					"height": 240,
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Infos[8].Description",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"styledText": true
+				},
+				"StepNumber23": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 250,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas"
+				},
+				"InputText17": {
+					"type": "input",
+					"top": 450,
+					"left": 650,
+					"width": 300,
+					"height": 300,
+					"sizingX": "grow",
+					"dataSource": "Form:C1466.quotas",
+					"dataSourceTypeHint": "text",
+					"fill": "#FBFCFE",
+					"stroke": "#26334D",
+					"borderStyle": "solid",
+					"borderRadius": 8,
+					"fontSize": 14,
+					"dragging": "none",
+					"dropping": "none",
+					"enterable": true,
+					"focusable": false,
+					"textAlign": "left",
+					"verticalAlign": "top"
+				},
+				"BtnContinueBackground24": {
+					"type": "rectangle",
+					"top": 590,
+					"left": 470,
+					"width": 130,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "transparent",
+					"fill": "#3AA2FB"
+				},
+				"Text24": {
+					"type": "text",
+					"text": "Test now",
+					"top": 599,
+					"left": 470,
+					"width": 130,
+					"height": 0,
+					"stroke": "#FFFFFF",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue24": {
+					"type": "button",
+					"top": 590,
+					"left": 470,
+					"width": 130,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue24.4dm"
+				},
+				"BtnContinueBackground25": {
+					"type": "rectangle",
+					"top": 590,
+					"left": 330,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 6,
+					"stroke": "#289FE8",
+					"fill": "#FFFFFF"
+				},
+				"Text25": {
+					"type": "text",
+					"text": "Reset",
+					"top": 599,
+					"left": 330,
+					"width": 120,
+					"height": 0,
+					"stroke": "#289FE8",
+					"textAlign": "center",
+					"fontWeight": "bold",
+					"fontSize": 18
+				},
+				"BtnContinue25": {
+					"type": "button",
+					"top": 590,
+					"left": 330,
+					"width": 120,
+					"height": 40,
+					"sizingX": "move",
+					"sizingY": "move",
+					"style": "regular",
+					"text": "GO",
+					"borderStyle": "none",
+					"fontSize": 14,
+					"fontWeight": "bold",
+					"textAlign": "center",
+					"events": [
+						"onClick"
+					],
+					"display": false,
+					"method": "ObjectMethods/BtnContinue25.4dm"
+				},
+				"StepNumber24": {
+					"type": "text",
+					"top": 82,
+					"left": 80,
+					"width": 750,
+					"height": 28,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "bold",
+					"text": "Entity sets (REST server)"
+				}
+			}
+		}
 	],
 	"$4d": {
 		"version": "1",
@@ -2164,7 +2429,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 2407,
+	"geometryStamp": 2408,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
