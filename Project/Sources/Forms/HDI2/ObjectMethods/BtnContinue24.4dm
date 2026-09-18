@@ -1,3 +1,3 @@
 
 
-Form:C1466.testNow("requestData"; "newSession")
+Form:C1466.testNow("workOnEntitySets")

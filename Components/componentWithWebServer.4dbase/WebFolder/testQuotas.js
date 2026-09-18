@@ -23,7 +23,6 @@ const btnRefreshSessions = document.getElementById('btnRefreshSessions');
 const nbEntitySetsEl = document.getElementById('nbEntitySets');
 const entitySetCountEl = document.getElementById('entitySetCount');
 const btnCreateEntitySets = document.getElementById('btnCreateEntitySets');
-let entitySetSessionCookie = null;
 
 if (new URLSearchParams(window.location.search).get('action') === 'sendData') {
   document.querySelectorAll('.send-data-section').forEach((section) => {
@@ -39,6 +38,10 @@ if (new URLSearchParams(window.location.search).get('action') === 'requestData')
 
 if (new URLSearchParams(window.location.search).get('action') === 'workOnSessions') {
   document.querySelector('.sessions-section').classList.add('sessions-highlight');
+}
+
+if (new URLSearchParams(window.location.search).get('action') === 'workOnEntitySets') {
+  document.querySelector('.entity-sets-section').classList.add('entity-sets-highlight');
 }
 
 if (new URLSearchParams(window.location.search).get('option') === 'newSession') {
@@ -246,29 +249,18 @@ document.getElementById('btnOpenAndAuthenticateSessions').addEventListener('clic
   await loadSessionCounts();
 });
 
-// Crée des entity sets sans envoyer le cookie de la session courante.
+// Demande la création d'entity sets sur une nouvelle session.
 async function createEntitySets() {
   const count = parseInt(entitySetCountEl.value, 10) || 0;
 
-  for (let i = 0; i < count; i++) {
-    try {
-      const response = await fetch('http://127.0.0.1/rest/SomeData?$method=entityset', {
-        method: 'GET',
-        credentials: 'omit',
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  try {
+    const response = await fetch(`http://127.0.0.1/createEntitySet?size=${encodeURIComponent(count)}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-      const setCookie = response.headers.get('Set-Cookie');
-      if (setCookie) {
-        entitySetSessionCookie = setCookie
-          .split(';')[0]
-          .replace(/^4DSID_HDI_WebServer_RateLimitingQuotas=/, '');
-      } else {
-        logLine('The session cookie is not accessible from the browser.', 'lerr');
-      }
-    } catch (err) {
-      logLine(`Unable to create entity set: ${err.message}`, 'lerr');
-    }
+    const result = await response.json();
+    logLine(`${timestamp()}  createEntitySet  →  ${JSON.stringify(result)}`, 'lok');
+  } catch (err) {
+    logLine(`Unable to create entity sets: ${err.message}`, 'lerr');
   }
 
   await loadSessionCounts();
