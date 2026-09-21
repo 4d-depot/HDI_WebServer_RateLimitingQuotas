@@ -255,15 +255,9 @@ async function createEntitySets() {
 
   try {
     const response = await fetch(`http://127.0.0.1/createEntitySet?size=${encodeURIComponent(count)}`);
-    
-    
-    let cssClass = 'lok';
-    if (response.status === 429) {
-      cssClass = 'l429';
-    } 
-
     const result = await response.json();
-    logLine(`${timestamp()}  createEntitySet  →  status: ${response.status} - ${JSON.stringify(result)}`, cssClass);
+    const cssClass = result.status === 429 || result.status === 402 ? 'l429' : 'lok';
+    logLine(`${timestamp()}  createEntitySet  →  status: ${result.status} - ${JSON.stringify(result)}`, cssClass);
   } catch (err) {
     logLine(`Unable to create entity sets: ${err.message}`, 'lerr');
   }
