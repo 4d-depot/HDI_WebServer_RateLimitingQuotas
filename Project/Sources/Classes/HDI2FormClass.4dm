@@ -152,7 +152,7 @@ Function testNow($action : Text; $option : Text)
 	
 	$url+="?action="+$action
 	
-	If ($option#Null:C1517)
+	If (($option#Null:C1517) && ($option#""))
 		$url+="&option="+$option
 	End if 
 	

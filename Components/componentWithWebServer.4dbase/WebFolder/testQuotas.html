@@ -302,7 +302,7 @@
   }
   #log .l429{color:#e08a6d;}
   #log .lok{color:#8fbf9f;}
-  #log .lerr{color:#e08a6d;font-weight:bold;}
+  #log .lerr{color:#ff0000;font-weight:bold;}
   .footer-actions{
     display:flex;
     justify-content:center;
@@ -414,8 +414,8 @@
       <h2>Send Data (Request Burst)</h2>
    <br>
       <div class="row">
-        <label>Send data every <input style="text-align: center;" class="inputData" type="number" id="burstPostDelay" value="2" min="1"> seconds</label>
-        <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstPostCount" value="10" min="1"> requests</label>
+        <label>Send data every <input style="text-align: center;" class="inputData" type="number" id="burstPostDelay" value="1" min="1"> seconds</label>
+        <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstPostCount" value="60" min="1"> requests</label>
       </div>
       <div class="row">
         <label>Size to send: <input style="text-align: center;" class="inputData" type="number" id="burstPostSize" value="1000" min="1"> bytes</label>
@@ -441,8 +441,8 @@
       <h2>Request Data (Request Burst)</h2>
        <br>
       <div class="row">
-        <label>Request data every <input style="text-align: center;" class="inputData" type="number" id="burstGetDelay" value="2" min="1"> seconds</label>
-        <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstGetCount" value="10" min="1"> requests</label>
+        <label>Request data every <input style="text-align: center;" class="inputData" type="number" id="burstGetDelay" value="1" min="1"> seconds</label>
+        <label>until reaching <input style="text-align: center;" class="inputData" type="number" id="burstGetCount" value="60" min="1"> requests</label>
       </div>
       <div class="row">
         <label>Size to request: <input style="text-align: center;" class="inputData" type="number" id="burstGetSize" value="1000" min="1"> bytes</label>
@@ -466,7 +466,7 @@
   <section class="sessions-section">
     <h2>Concurrent Sessions</h2>
     <div class="row">
-      <label>Number of Guest sessions to open <input style="text-align: center;" class="inputData"  type="number" id="sessionCount" value="3" min="1"></label>
+      <label>Number of Guest sessions to open <input style="text-align: center;" class="inputData"  type="number" id="sessionCount" value="1" min="1"></label>
       <button id="btnOpenSessions">Open</button>
     </div>
     <div class="row">
@@ -489,11 +489,15 @@
     <div id="stats">
       <label>Number of requests sent:</label><span id="statTotal" class="count">0</span>
       <label>HTTP status 200 / 2xx:</label><span id="statOk" class="countOK">0</span>
-      <label>HTTP status 429:</label><span id="stat429" class="countKO">0</span>
+      <label>HTTP status 429:</label><span id="stat429" class="countKO">0</span>     
     </div>
     <div class="row footer-actions">
       <button id="btnClearLog" class="secondary">Clear Log</button>
     </div>
+    <br>
+    <label>Note the <b>Retry-After</b> response header indicating when the next time window starts.</label>
+    <br>
+    
     <div id="log"></div>
   </section>
 

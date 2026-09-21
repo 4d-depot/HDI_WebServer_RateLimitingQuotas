@@ -148,7 +148,7 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
     }
 
     const retryAfter = response.headers.get('Retry-After');
-    let details = `${timestamp()}  Done  →  status: ${response.status} - ${duration}ms - Sent to the server: ${sentBytes} bytes, Received from the server: ${receivedBytes} bytes`;
+    let details = `${timestamp()}  Done  →  status: ${response.status} - ${duration}ms - Sent to the server: ${sentBytes} bytes, Response received from the server: ${receivedBytes} bytes`;
     if (retryAfter !== null) details += `  Retry-After: "${retryAfter}"`;
     if (newSession) details += '  [new session]';
 
@@ -255,10 +255,15 @@ async function createEntitySets() {
 
   try {
     const response = await fetch(`http://127.0.0.1/createEntitySet?size=${encodeURIComponent(count)}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    
+    
+    let cssClass = 'lok';
+    if (response.status === 429) {
+      cssClass = 'l429';
+    } 
 
     const result = await response.json();
-    logLine(`${timestamp()}  createEntitySet  →  ${JSON.stringify(result)}`, 'lok');
+    logLine(`${timestamp()}  createEntitySet  →  status: ${response.status} - ${JSON.stringify(result)}`, cssClass);
   } catch (err) {
     logLine(`Unable to create entity sets: ${err.message}`, 'lerr');
   }
