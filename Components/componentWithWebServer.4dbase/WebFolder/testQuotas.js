@@ -24,27 +24,35 @@ const nbEntitySetsEl = document.getElementById('nbEntitySets');
 const entitySetCountEl = document.getElementById('entitySetCount');
 const btnCreateEntitySets = document.getElementById('btnCreateEntitySets');
 
-if (new URLSearchParams(window.location.search).get('action') === 'sendData') {
+const queryParams = new URLSearchParams(window.location.search);
+const action = queryParams.get('action');
+
+if (action === 'sendData') {
   document.querySelectorAll('.send-data-section').forEach((section) => {
     section.classList.add('send-data-highlight');
   });
 }
 
-if (new URLSearchParams(window.location.search).get('action') === 'requestData') {
+if (action === 'requestData') {
   document.querySelectorAll('.request-data-section').forEach((section) => {
     section.classList.add('request-data-highlight');
   });
 }
 
-if (new URLSearchParams(window.location.search).get('action') === 'workOnSessions') {
+if (action === 'workOnSessions') {
   document.querySelector('.sessions-section').classList.add('sessions-highlight');
 }
 
-if (new URLSearchParams(window.location.search).get('action') === 'workOnEntitySets') {
+if (action === 'workOnEntitySets') {
   document.querySelector('.entity-sets-section').classList.add('entity-sets-highlight');
 }
 
-if (new URLSearchParams(window.location.search).get('option') === 'newSession') {
+if (action) {
+  document.querySelectorAll('section:not(.results-section):not(.current-values):not(.send-data-highlight):not(.request-data-highlight):not(.sessions-highlight):not(.entity-sets-highlight)')
+    .forEach((section) => section.classList.add('dimmed'));
+}
+
+if (queryParams.get('option') === 'newSession') {
   document.querySelectorAll('section.send-data-highlight input[type="checkbox"], section.request-data-highlight input[type="checkbox"]')
     .forEach((checkbox) => {
       checkbox.classList.add('new-session-highlight');
