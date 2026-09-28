@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rate Limiting Demo - 4D Web Server</title>
 <style>
   :root{
@@ -42,16 +43,18 @@
   }
   main{
     max-width:none;
+    width:100%;
     margin:0;
     padding:0 32px 64px;
     display:grid;
-    grid-template-columns:minmax(620px, 3fr) minmax(560px, 2fr);
+    grid-template-columns:718px minmax(478px, 1fr);
     align-items:start;
     gap:20px;
   }
   .main-content{
     display:grid;
     gap:20px;
+    min-width:0;
   }
   .results-section{
     grid-column:2;
@@ -67,7 +70,17 @@
     grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:20px;
   }
+  @media (max-width:1000px){
+    main{grid-template-columns:1fr;}
+    .results-section{
+      grid-column:1;
+      grid-row:auto;
+    }
+  }
   @media (max-width:700px){
+    header{padding:10px 16px 4px;}
+    header h1{width:100%; margin-left:0;}
+    main{padding:0 16px 40px;}
     main{grid-template-columns:1fr;}
     .results-section{
       grid-column:1;
@@ -81,6 +94,7 @@
     border:1px solid var(--border);
     border-radius:8px;
     padding:18px 15px;
+    min-width:0;
   }
   section.send-data-highlight{
     background:#f0faf4;
@@ -129,20 +143,18 @@
 
   .sessions-section{
     display:flex;
-    align-items:center;
+    flex-direction:column;
+    align-items:stretch;
     gap:16px;
-    overflow-x:auto;
+    min-width:0;
   }
   .sessions-section h2{
-    flex:0 0 auto;
     margin:0;
   }
   .sessions-section .row{
-    flex:0 0 auto;
-    flex-wrap:nowrap;
+    flex-wrap:wrap;
     margin:0;
     gap:8px;
-    white-space:nowrap;
   }
 
  section p.hint{
@@ -230,7 +242,6 @@
     font-size:13px;
     cursor:pointer;
   }
-  button:hover{}
   button.secondary{
     background:#fff;
     color:var(--accent);
@@ -254,7 +265,15 @@
   }
   .current-values{
     display:flex;
+    flex-wrap:wrap;
     align-items:center;
+    gap:16px;
+  }
+  .current-values-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex:1 0 100%;
     gap:16px;
   }
   .entity-sets-section .row{
@@ -263,12 +282,12 @@
   }
   .entity-sets-section{
     display:flex;
-    align-items:center;
+    flex-direction:column;
+    align-items:stretch;
     gap:16px;
-    overflow-x:auto;
+    min-width:0;
   }
   .entity-sets-section h2{
-    flex:0 0 auto;
     margin:0;
   }
   .current-values h2{
@@ -277,15 +296,14 @@
   }
   .current-values #stats{
     flex:1 1 auto;
-    flex-wrap:nowrap;
+    flex-wrap:wrap;
     min-width:0;
     margin-bottom:0;
-    overflow-x:auto;
-    white-space:nowrap;
+    overflow:visible;
+    white-space:normal;
   }
   .current-values #stats label,
-  .current-values #stats span,
-  .current-values #stats button{
+  .current-values #stats span{
     flex:0 0 auto;
   }
 
@@ -307,6 +325,7 @@
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-wrap:wrap;
     gap:10px;
     margin-top:16px;
     width:100%;
@@ -350,6 +369,20 @@
     font-weight:600;
     color:var(--text);
   }
+  @media (max-width:560px){
+    .single-request-columns,
+    .burst-columns{grid-template-columns:1fr;}
+    section{padding:15px 12px;}
+    .sessions-section,
+    .entity-sets-section,
+    .current-values{align-items:flex-start;}
+    .sessions-section .row,
+    .entity-sets-section .row{flex-wrap:wrap; white-space:normal;}
+    .current-values{display:block;}
+    .current-values-header,
+    .current-values #stats{width:100%;}
+    #log{height:360px; font-size:11px;}
+  }
 </style>
 </head>
 <body>
@@ -362,12 +395,14 @@
 <main>
   <div class="main-content">
   <section class="current-values">
-    <h2>Current Values</h2>
+    <div class="current-values-header">
+      <h2>Current Values</h2>
+      <button id="btnRefreshSessions" type="button">Refresh</button>
+    </div>
     <div id="stats" class="row">
       <label>Number of sessions:</label><span id="nbSessions" class="count">0</span>
       <label>Number of Guest sessions:</label><span id="nbGuestSessions" class="count">0</span>
       <label>Number of entity sets:</label><span id="nbEntitySets" class="count">0</span>
-      <button id="btnRefreshSessions" type="button">Refresh</button>
     </div>
   </section>
 
@@ -495,7 +530,7 @@
       <button id="btnClearLog" class="secondary">Clear Log</button>
     </div>
     <br>
-    <label>Note the <b>Retry-After</b> response header indicating when the next time window starts.</label>
+    <label>Note the Retry-After response header indicating when the next time window starts.</label>
     <br>
     
     <div id="log"></div>
