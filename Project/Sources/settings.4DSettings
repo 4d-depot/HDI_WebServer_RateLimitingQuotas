@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="19">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="20">
 	<com.4d>
 		<deployment>
 			<options/>
 		</deployment>
-		<general startup_environnement="0"/>
+		<general startup_environnement="1"/>
 		<interface>
 			<user sdi_application="true" splash_screen="false"/>
 		</interface>
