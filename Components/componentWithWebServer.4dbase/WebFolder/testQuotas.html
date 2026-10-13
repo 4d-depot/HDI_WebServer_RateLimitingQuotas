@@ -112,6 +112,10 @@
     background:#f0faf4;
     border:2px solid var(--select);
   }
+  section.send-request-highlight{
+    background:#f0faf4;
+    border:2px solid var(--select);
+  }
   section.dimmed{
     opacity:.5;
   }
@@ -279,6 +283,20 @@
     flex:1 0 100%;
     gap:16px;
   }
+  .send-request-section{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:16px;
+    min-width:0;
+  }
+  .send-request-section h2{
+    margin:0;
+  }
+  .send-request-section .row{
+    justify-content:space-between;
+    margin:0;
+  }
   .entity-sets-section .row{
     flex-wrap:nowrap;
     white-space:nowrap;
@@ -406,6 +424,14 @@
       <label>Number of sessions:</label><span id="nbSessions" class="count">0</span>
       <label>Number of Guest sessions:</label><span id="nbGuestSessions" class="count">0</span>
       <label>Number of entity sets:</label><span id="nbEntitySets" class="count">0</span>
+    </div>
+  </section>
+
+  <section class="send-request-section">
+    <h2>Send a request</h2>
+    <div class="row">
+      <label>Send a request to the server</label>
+      <button id="btnSendRequest" type="button">Send request</button>
     </div>
   </section>
 

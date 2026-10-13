@@ -1,3 +1,3 @@
 
 
-Form:C1466.testNow("requestData")
+Form:C1466.testNow("sendRequest")

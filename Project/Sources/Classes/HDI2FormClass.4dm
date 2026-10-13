@@ -109,11 +109,14 @@ Function restartWebServer()
 	
 Function applyQuota($quotaName : Text; $quotaValue : Integer; $resetQuotas : Boolean)
 	
+	var $webServerQuotas:=WEB Server:C1674().quotas
+	
+	
 	If ($resetQuotas)
 		This:C1470.resetQuotas()
 	End if 
 	
-	WEB Server:C1674().quotas[$quotaName]:=$quotaValue
+	$webServerQuotas[$quotaName]:=$quotaValue
 	
 	Form:C1466.quotas:=This:C1470.getQuotas()
 	
@@ -129,9 +132,11 @@ Function getQuotas() : Object
 	
 	var $result:={}
 	
-	For each ($name; WEB Server:C1674().quotas)
+	var $webServerQuotas:=WEB Server:C1674().quotas
+	
+	For each ($name; $webServerQuotas)
 		If ($name#"currentValues")
-			$result[$name]:=WEB Server:C1674().quotas[$name]
+			$result[$name]:=$webServerQuotas[$name]
 		End if 
 	End for each 
 	
@@ -140,7 +145,9 @@ Function getQuotas() : Object
 	
 Function resetThisQuota($quotaName : Text)
 	
-	WEB Server:C1674().quotas[$quotaName]:=Null:C1517
+	var $webServerQuotas:=WEB Server:C1674().quotas
+	
+	$webServerQuotas[$quotaName]:=Null:C1517
 	Form:C1466.proposedQuotas[$quotaName]:=0
 	Form:C1466.quotas:=This:C1470.getQuotas()
 	

@@ -544,17 +544,6 @@
 					"height": 380,
 					"stroke": "#289FE8"
 				},
-				"StepNumber5": {
-					"type": "text",
-					"top": 420,
-					"left": 650,
-					"width": 250,
-					"height": 30,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "normal",
-					"text": "Web server().quotas"
-				},
 				"InputText4": {
 					"type": "input",
 					"top": 450,
@@ -718,6 +707,17 @@
 					"fontSize": 20,
 					"fontWeight": "bold",
 					"text": "The nbRequestsPerMin quota"
+				},
+				"StepNumber5": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 300,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas object"
 				}
 			}
 		},
@@ -854,17 +854,6 @@
 					"fontSize": 14,
 					"styledText": true
 				},
-				"StepNumber12": {
-					"type": "text",
-					"top": 420,
-					"left": 650,
-					"width": 250,
-					"height": 30,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "normal",
-					"text": "Web server().quotas"
-				},
 				"InputText6": {
 					"type": "input",
 					"top": 450,
@@ -984,6 +973,17 @@
 					"fontSize": 20,
 					"fontWeight": "bold",
 					"text": "The inBytesPerMinPerSession quota"
+				},
+				"StepNumber12": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 300,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas object"
 				}
 			}
 		},
@@ -1041,17 +1041,6 @@
 					"width": 0,
 					"height": 380,
 					"stroke": "#289FE8"
-				},
-				"StepNumber4": {
-					"type": "text",
-					"top": 420,
-					"left": 650,
-					"width": 250,
-					"height": 30,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "normal",
-					"text": "Web server().quotas"
 				},
 				"InputText2": {
 					"type": "input",
@@ -1250,6 +1239,17 @@
 					"fontSize": 20,
 					"fontWeight": "bold",
 					"text": "The outBytesPerMin quota"
+				},
+				"StepNumber4": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 300,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas object"
 				}
 			}
 		},
@@ -1386,17 +1386,6 @@
 					"fontSize": 14,
 					"styledText": true
 				},
-				"StepNumber15": {
-					"type": "text",
-					"top": 420,
-					"left": 650,
-					"width": 250,
-					"height": 30,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "normal",
-					"text": "Web server().quotas"
-				},
 				"InputText8": {
 					"type": "input",
 					"top": 450,
@@ -1516,6 +1505,17 @@
 					"fontSize": 20,
 					"fontWeight": "bold",
 					"text": "The outBytesPerMinPerSession quota"
+				},
+				"StepNumber15": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 300,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas object"
 				}
 			}
 		},
@@ -1660,17 +1660,6 @@
 					"borderStyle": "none",
 					"fontSize": 14,
 					"styledText": true
-				},
-				"StepNumber21": {
-					"type": "text",
-					"top": 420,
-					"left": 650,
-					"width": 250,
-					"height": 30,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "normal",
-					"text": "Web server().quotas"
 				},
 				"InputText14": {
 					"type": "input",
@@ -1882,6 +1871,17 @@
 					"fontSize": 20,
 					"fontWeight": "bold",
 					"text": "The nbSessions and nbGuestSessions quotas"
+				},
+				"StepNumber16": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 300,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas object"
 				}
 			}
 		},
@@ -2018,17 +2018,6 @@
 					"fontSize": 14,
 					"styledText": true
 				},
-				"StepNumber23": {
-					"type": "text",
-					"top": 420,
-					"left": 650,
-					"width": 250,
-					"height": 30,
-					"stroke": "#289FE8",
-					"fontSize": 20,
-					"fontWeight": "normal",
-					"text": "Web server().quotas"
-				},
 				"InputText17": {
 					"type": "input",
 					"top": 450,
@@ -2148,6 +2137,17 @@
 					"fontSize": 20,
 					"fontWeight": "bold",
 					"text": "The nbEntitySetsPerSession quota"
+				},
+				"StepNumber17": {
+					"type": "text",
+					"top": 420,
+					"left": 650,
+					"width": 300,
+					"height": 30,
+					"stroke": "#289FE8",
+					"fontSize": 20,
+					"fontWeight": "normal",
+					"text": "Web server().quotas object"
 				}
 			}
 		}
@@ -2163,7 +2163,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 2558,
+	"geometryStamp": 2570,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"

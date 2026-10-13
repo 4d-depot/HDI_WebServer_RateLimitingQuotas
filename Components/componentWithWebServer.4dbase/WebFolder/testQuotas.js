@@ -47,8 +47,12 @@ if (action === 'workOnEntitySets') {
   document.querySelector('.entity-sets-section').classList.add('entity-sets-highlight');
 }
 
+if (action === 'sendRequest') {
+  document.querySelector('.send-request-section').classList.add('send-request-highlight');
+}
+
 if (action) {
-  document.querySelectorAll('section:not(.results-section):not(.current-values):not(.send-data-highlight):not(.request-data-highlight):not(.sessions-highlight):not(.entity-sets-highlight)')
+  document.querySelectorAll('section:not(.results-section):not(.current-values):not(.send-data-highlight):not(.request-data-highlight):not(.sessions-highlight):not(.entity-sets-highlight):not(.send-request-highlight)')
     .forEach((section) => section.classList.add('dimmed'));
 }
 
@@ -169,6 +173,12 @@ async function sendRequest({ method = 'GET', body = null, querySize = null, newS
     return null;
   }
 }
+
+// --- Requête simple vers le serveur ---
+document.getElementById('btnSendRequest').addEventListener('click', async () => {
+  await sendRequest({ method: 'GET', body: null, querySize: null, newSession: false, authenticate: false });
+  await loadSessionCounts();
+});
 
 // --- Requête unique : POST avec corps ---
 document.getElementById('btnPostBody').addEventListener('click', async () => {
