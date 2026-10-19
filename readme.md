@@ -1,8 +1,8 @@
-# HDI_Template_20
+# HDI_WebServer_RateLimitingQuotas
 
-Description (4D 20 Rx)
+Description (4D 21 R5)
 
-Find more information on the [blog post](https://blog.4d.com/).
+Find more information on the [blog post](https://blog.4d.com/a-4d-web-server-that-knows-when-to-say-no).
 
 ## Installing and Using a 4D Project
 
