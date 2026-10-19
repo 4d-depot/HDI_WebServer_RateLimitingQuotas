@@ -123,8 +123,10 @@ Function applyQuota($quotaName : Text; $quotaValue : Integer; $resetQuotas : Boo
 	
 Function resetQuotas()
 	
+	var $webServerQuotas:=WEB Server:C1674().quotas
+	
 	For each ($name; This:C1470.quotaNames)
-		WEB Server:C1674.quotas[$name]:=Null:C1517
+		$webServerQuotas[$name]:=Null:C1517
 	End for each 
 	
 	

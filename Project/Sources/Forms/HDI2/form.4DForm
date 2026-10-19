@@ -152,7 +152,7 @@
 					"top": 410,
 					"left": 530,
 					"width": 400,
-					"height": 230,
+					"height": 250,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"dataSource": "Infos2[2].Description",
@@ -172,7 +172,7 @@
 					"top": 410,
 					"left": 70,
 					"width": 400,
-					"height": 230,
+					"height": 250,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"dataSource": "Infos2[1].Description",
@@ -2163,7 +2163,7 @@
 			"View 1": {}
 		}
 	},
-	"geometryStamp": 2570,
+	"geometryStamp": 2573,
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"formClass": "HDI2FormClass"
