@@ -1,5 +1,5 @@
 var $version; $maintext; $subtext; $r; $format : Text
-var $width; $height; $shift : Integer
+
 
 Case of 
 		

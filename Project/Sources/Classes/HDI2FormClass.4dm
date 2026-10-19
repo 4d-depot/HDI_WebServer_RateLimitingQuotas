@@ -76,6 +76,10 @@ Function formEventHandler($formEventCode : Integer)
 			
 		: ($formEventCode=On Timer:K2:25)
 			
+			var $signal : 4D:C1709.Signal
+			var $signaled : Boolean
+			
+			
 			$signal:=New signal:C1641
 			CALL WORKER:C1389("startWebServer"; "Worker"; $signal)
 			
@@ -100,6 +104,10 @@ Function formEventHandler($formEventCode : Integer)
 	
 Function restartWebServer()
 	
+	If (btnTrace)
+		TRACE:C157
+	End if 
+	
 	OBJECT SET TITLE:C194(*; "Restarting"; "Restarting ... please wait")
 	OBJECT SET RGB COLORS:C628(*; "Restarting"; 0x00E11D48)
 	OBJECT SET VISIBLE:C603(*; "Restarting"; True:C214)
@@ -111,6 +119,9 @@ Function applyQuota($quotaName : Text; $quotaValue : Integer; $resetQuotas : Boo
 	
 	var $webServerQuotas:=WEB Server:C1674().quotas
 	
+	If (btnTrace)
+		TRACE:C157
+	End if 
 	
 	If ($resetQuotas)
 		This:C1470.resetQuotas()
@@ -123,6 +134,8 @@ Function applyQuota($quotaName : Text; $quotaValue : Integer; $resetQuotas : Boo
 	
 Function resetQuotas()
 	
+	var $name : Text
+	
 	var $webServerQuotas:=WEB Server:C1674().quotas
 	
 	For each ($name; This:C1470.quotaNames)
@@ -131,6 +144,8 @@ Function resetQuotas()
 	
 	
 Function getQuotas() : Object
+	
+	var $name : Text
 	
 	var $result:={}
 	
@@ -149,6 +164,10 @@ Function resetThisQuota($quotaName : Text)
 	
 	var $webServerQuotas:=WEB Server:C1674().quotas
 	
+	If (btnTrace)
+		TRACE:C157
+	End if 
+	
 	$webServerQuotas[$quotaName]:=Null:C1517
 	Form:C1466.proposedQuotas[$quotaName]:=0
 	Form:C1466.quotas:=This:C1470.getQuotas()
@@ -157,6 +176,10 @@ Function resetThisQuota($quotaName : Text)
 Function testNow($action : Text; $option : Text)
 	
 	var $url:="http://127.0.0.1:8044/testQuotas.html"
+	
+	If (btnTrace)
+		TRACE:C157
+	End if 
 	
 	startComponentWebServer
 	

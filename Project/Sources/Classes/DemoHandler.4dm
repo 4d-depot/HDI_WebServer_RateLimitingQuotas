@@ -5,7 +5,7 @@ shared singleton Class constructor
 	
 Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	
-	//TRACE
+	var $files : Collection
 	
 	var $result:=4D:C1709.OutgoingMessage.new()
 	
@@ -31,6 +31,8 @@ Function handle($incoming : 4D:C1709.IncomingMessage) : 4D:C1709.OutgoingMessage
 	
 Function buildContent($size : Integer) : Text
 	
+	var $i : Integer
+	
 	var $result:=""
 	
 	For ($i; 1; $size)
@@ -46,6 +48,10 @@ Function createEntitySetsOnNewSession($incoming : 4D:C1709.IncomingMessage) : 4D
 	var $result:=4D:C1709.OutgoingMessage.new()
 	var $entitySets:=New collection:C1472()
 	var $createEntitySetUrl:="http://localhost/rest/SomeData?$method=entityset"
+	
+	var $request : 4D:C1709.HTTPRequest
+	var $statusText : Text
+	
 	
 	var $cookie:=""
 	var $status:=200
